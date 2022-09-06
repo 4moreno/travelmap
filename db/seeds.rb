@@ -147,3 +147,5 @@ Post.create(
   address: "190 Cathedral St, Glasgow G4 0RF, United Kingdom",
   title: "Musical",
   category: "entertainment",
+  description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna"
+)
