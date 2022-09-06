@@ -5,33 +5,29 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.destroy_all
-City.destroy_all
-Post.destroy_all
-
-User.create([{ username: "Dareos", email: "dareos@dareos.com", password: "111111" }])
-User.create([{ username: "Yuki", email: "dareos@dareos.com", password: "222222" }])
-User.create([{ username: "Sonja", email: "dareos@dareos.com", password: "333333" }])
-User.create([{ username: "Jose", email: "dareos@dareos.com", password: "444444" }])
-User.create([{ username: "George", email: "dareos@dareos.com", password: "555555" }])
-User.create([{ username: "Jess", email: "dareos@dareos.com", password: "666666" }])
-User.create([{ username: "Camila", email: "dareos@dareos.com", password: "777777" }])
-User.create([{ username: "Ernesto", email: "dareos@dareos.com", password: "888888" }])
-User.create([{ username: "Sergio", email: "dareos@dareos.com", password: "999999" }])
-User.create([{ username: "Elbay", email: "dareos@dareos.com", password: "000000" }])
-
-cities = City.create([{ name: "London" }, { name: "Madrid" },{ name: "Bilbao" },{ name: "Sevilla" },{ name: "Paris" },{ name: "Berlin" },{ name: "Glasgow" },{ name: "Manchester" },{ name: "Liverpool" },{ name: "Oslo" }]
 
 
+User.create(username: "Dareos", email: "dareos@dareos.com", password: "111111")
+User.create(username: "Yuki", email: "yuki@dareos.com", password: "222222")
+User.create(username: "Sonja", email: "sareos@dareos.com", password: "333333")
+User.create(username: "Jose", email: "jareos@dareos.com", password: "444444")
+User.create(username: "George", email: "gareos@dareos.com", password: "555555")
+User.create(username: "Jess", email: "jess@dareos.com", password: "666666")
+User.create(username: "Camila", email: "camila@dareos.com", password: "777777")
+User.create(username: "Ernesto", email: "ernesto@dareos.com", password: "888888")
+User.create(username: "Sergio", email: "sergio@dareos.com", password: "999999")
+User.create(username: "Elbay", email: "elbay@dareos.com", password: "000000")
 
-Post.create([{
+cities = City.create([{ name: "London" }, { name: "Madrid" }, { name: "Bilbao" }, { name: "Sevilla" }, { name: "Paris" }, { name: "Berlin" }, { name: "Glasgow" }, { name: "Manchester" }, { name: "Liverpool" }, { name: "Oslo" }])
+
+Post.create(
   user_id: "1",
   city_id: "2",
   address: "Calle de Maldonado, 51, 28006 Madrid, Spain",
   title: "Star Wars",
   category: "movie",
   description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna"
-}])
+)
 
 Post.create(
   user_id: "2",
