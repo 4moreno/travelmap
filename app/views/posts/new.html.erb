@@ -1,2 +1,12 @@
 <h1>Posts#new</h1>
 <p>Find me in app/views/posts/new.html.erb</p>
+<%= simple_form_for @post do |f| %>
+  <div class="container form-inputs">
+      <%= f.input :title %>
+      <%= f.input :category %>
+      <%= f.input :description %>
+      <%= f.input :address %>
+      <%# <%= f.input :photos, as: :file, input_html: { multiple: true } %> %>
+      <%= f.submit "Save", class: "btn-orange mb-2"%>
+  </div>
+<% end %>

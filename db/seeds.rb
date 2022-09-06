@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
@@ -146,23 +147,3 @@ Post.create(
   address: "190 Cathedral St, Glasgow G4 0RF, United Kingdom",
   title: "Musical",
   category: "entertainment",
-  description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna"
-)
-
-Post.create(
-  user_id: "9",
-  city_id: "8",
-  address: "Vaughan St, Manchester M12 5FQ, United Kingdom",
-  title: "Football match",
-  category: "sport",
-  description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna"
-)
-
-Post.create(
-  user_id: "3",
-  city_id: "9",
-  address: "Craighurst Rd, Liverpool L25 1NW, United Kingdom",
-  title: "Cocktail bar",
-  category: "food",
-  description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna"
-)
