@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = policy_scope(Post)
@@ -27,9 +27,15 @@ class PostsController < ApplicationController
   end
 
   def update
+    if @post.update(post_params)
+      redirect_to post_path(@post), status: :see_other, notice: "You successfully updated the post: #{@post.title}"
+    end
   end
 
   def destroy
+    if @post.destroy
+      redirect_to posts_path, status: :see_other, notice: "You successfully deleted the product: #{@post.title}"
+    end
   end
 
   private

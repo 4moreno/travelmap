@@ -10,9 +10,18 @@ class PostPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    true
+  end
+
   def update?
     # record = instance of post
     # user = current_user
     record.user == user
   end
+
+  def destroy?
+    record.user == user
+  end
+
 end
