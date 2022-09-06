@@ -2,14 +2,15 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = policy_scope(Post)
   end
 
   def show
   end
 
   def create
-    @posts = Post.new(post_params)
+    @post = Post.new(post_params)
+    authorize @post
     if @post.save
       redirect_to post_path(@post), status: :see_other, notice: "You successfully created the post: #{@post.title}"
     else
@@ -18,12 +19,17 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
+    authorize @post
   end
 
   def edit
   end
 
   def update
+    if @post.update(post_params)
+      redirect_to post_path(@post), status: :see_other, notice: "You successfully updated the post: #{@product.title}"
+    end
   end
 
   def destroy
@@ -37,5 +43,6 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+    authorize @post
   end
 end
