@@ -1,55 +1,82 @@
-// Card on show page
+// Cards: card without map (#index page) & card with map (#show page)
 
-.show-card {
+.card {
+  display: flex;
+  justify-content: center;
+  min-height: 380px;
+  margin-top: 10px;
+  overflow: hidden;
+  background: white;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-with-map {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
   overflow: hidden;
   background: white;
   width: 40%;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.show-card-with-map {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  overflow: hidden;
-  background: white;
-  width: 45%;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.show-card-image {
+.card-image {
   height: 200px;
   width: 100%;
   object-fit: cover;
 }
 
-.show-card-user-contant #post-img {
+.card-user-contant #post-img {
   height: 200px;
   width: 100%;
   object-fit: cover;
 }
 
-.show-card h2, h3, .show-card-with-map h2, h3 {
+.card-infos h2, h3 {
   font-weight: bold;
   line-height: 1.2;
   margin: 0;
 }
 
-.show-card h2, .show-card-with-map h2 {
+.card-infos h2 {
+  font-size: 16px;
+  color: $peach;
+}
+
+.card-infos h3 {
+  font-size: 14px;
+  opacity: .7;
+}
+
+.card-infos h4 {
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.card-with-map h2, h3 {
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.card-with-map h2 {
   font-size: 20px;
 }
 
-.show-card h3, .show-card-with-map h3 {
+.card-with-map h3 {
   font-size: 16px;
+  opacity: .8;
 }
 
-.show-card h4, .show-card-with-map h4 {
+.card-with-map h4 {
   font-size: 14px;
   line-height: 1.2;
   font-weight: 600;
 }
 
-.show-card p, .show-card-with-map p {
+.card-with-map p {
   font-size: 13px;
   line-height: 1.1;
   opacity: .7;
@@ -58,18 +85,31 @@
 }
 
 
-.show-card-infos {
+.card-infos {
   padding: 16px;
   position: relative;
 }
 
-.show-card-user {
+.card-infos #bookmark-icon {
   position: absolute;
-  right: 16px;
-  top: -20px;
+  right: 66px;
+  top: -35px;
   width: 40px;
 }
 
-.show-card-map {
+#bookmark-icon button {
+  border: none;
+  background-color: transparent;
+}
+
+.card-user {
+  position: absolute;
+  right: 16px;
+  top: -36px;
+  width: 40px;
+}
+
+.card-map {
   background: white;
+  width: 70%;
 }
