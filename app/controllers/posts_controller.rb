@@ -3,6 +3,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = policy_scope(Post)
+    if params[:query].present?
+      @posts = Post.search_by_title_description_and_category(params[:query])
+    else
+      @posts = Post.all
+    end
   end
 
   def show
