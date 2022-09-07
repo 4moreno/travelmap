@@ -3,6 +3,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = policy_scope(Post)
+    if params[:query].present?
+      @posts = Post.global_search(params[:query])
+    else
+      @posts = Post.all
+    end
   end
 
   def show
