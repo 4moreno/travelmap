@@ -38,16 +38,4 @@ class Post < ApplicationRecord
         ["title_#{title}", "description_#{description}", "category_#{category}", "city_id_#{city_id}"]
       end
     end
-
-
-
-
-
-
-
-
-
-
-
-
 end
