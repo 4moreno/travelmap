@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     @posts = policy_scope(Post)
     if params[:query].present?
-      @posts = Post.global_search(params[:query])
+      @posts = raw_algolia_search(params[:query])
     else
       @posts = Post.all
     end
@@ -45,6 +45,23 @@ class PostsController < ApplicationController
 
   private
 
+  def raw_algolia_search(query)
+    search_options = {
+      attributesToHighlight: ['*']
+    }
+    raw_hits = Post.raw_search(query, search_options)["hits"]
+    raw_hits.map! do |hit|
+      highlighted_res = hit["_highlightResult"]
+      Post.new(
+        title: highlighted_res["title"]["value"],
+        description: highlighted_res["description"]["value"],
+        category: highlighted_res["category"]["value"],
+        address: highlighted_res["address"]["value"],
+        # city_name: highlighted_res["city_name"]["value"]
+      )
+    end
+  end
+
   def post_params
     params.require(:post).permit(:title, :description, :category, :address)
   end
@@ -53,4 +70,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize @post
   end
+end
+
+def strip_tags(html)
+  self.class.full_sanitizer.sanitize(html)
 end

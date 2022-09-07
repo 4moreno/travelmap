@@ -13,7 +13,8 @@
 
 <div class="container">
   <% @posts.each do |post|  %>
-  <p> <%= post.title %> </p>
-  <p> <%= post.description %> </p>
+  <p> <mark><%= post.title %><mark> </p>
+  <p>  <mark><%= post.description %><mark> </p>
+  <p>  <mark><%= post.category %><mark> </p>
   <% end  %>
 </div>
