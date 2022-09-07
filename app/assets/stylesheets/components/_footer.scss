@@ -1,0 +1,18 @@
+.footer {
+  background-color: $peach;
+  color: white;
+  padding: 20px;
+}
+
+.footer-links a {
+  color: white;
+  font-size: 30px;
+
+  &:hover {
+    color: rgb(184, 181, 181);
+  }
+}
+
+.footer p {
+  font-size: small;
+}
