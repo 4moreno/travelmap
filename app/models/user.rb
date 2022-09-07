@@ -6,4 +6,13 @@ class User < ApplicationRecord
 
   has_many :posts
   has_one :wishlist
+  has_many :bookmarks, through: :wishlist
+
+  after_create :create_wishlist
+
+  private
+
+  def create_wishlist
+    Wishlist.create(user: self)
+  end
 end
