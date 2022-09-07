@@ -1,0 +1,75 @@
+// Card on show page
+
+.show-card {
+  overflow: hidden;
+  background: white;
+  width: 40%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.show-card-with-map {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  overflow: hidden;
+  background: white;
+  width: 45%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.show-card-image {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.show-card-user-contant #post-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.show-card h2, h3, .show-card-with-map h2, h3 {
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.show-card h2, .show-card-with-map h2 {
+  font-size: 20px;
+}
+
+.show-card h3, .show-card-with-map h3 {
+  font-size: 16px;
+}
+
+.show-card h4, .show-card-with-map h4 {
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.show-card p, .show-card-with-map p {
+  font-size: 13px;
+  line-height: 1.1;
+  opacity: .7;
+  margin: 0;
+  font-weight: 400;
+}
+
+
+.show-card-infos {
+  padding: 16px;
+  position: relative;
+}
+
+.show-card-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.show-card-map {
+  background: white;
+}

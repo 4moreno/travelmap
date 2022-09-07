@@ -1,2 +1,22 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<%# <h1>Posts#show</h1>
+<p>Find me in app/views/posts/show.html.erb</p> %>
+
+<%# Card %>
+<div class="d-flex justify-content-center">
+<div class="show-card-with-map">
+  <div class="p-4 rounded" >
+    <img class="show-card-image" src="https://cdn.pixabay.com/photo/2016/11/18/14/39/beans-1834984_960_720.jpg" />
+    <div class="show-card-infos mt-3">
+        <h2 class="mb-1"><%= @post.title %></h2>
+        <h3 class="mb-1"><%= @post.category %></h3>
+        <h4 class="mb-3"><%= @post.address %></h4>
+        <p><%= @post.description %></p>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="show-card-user avatar-bordered" />
+    </div>
+  </div>
+  <div class="show-card-map border">
+    <p>Placeholder for map</p>
+  </div>
+</div>
+</div>
+<%# Avatar %>
