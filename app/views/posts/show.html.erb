@@ -1,23 +1,39 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
-
-<div>
-<% bookmark_for_post = current_user.bookmarks.find_by(post: @post) %>
-<% if bookmark_for_post %>
-  <%= button_to bookmark_path(bookmark_for_post), method: :delete do %>
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bookmark"
-         width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="#c24a66" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <path d="M9 4h6a2 2 0 0 1 2 2v14l-5 -3l-5 3v-14a2 2 0 0 1 2 -2" />
-    </svg>
-  <% end %>
-<% else %>
-  <%= button_to post_bookmarks_path(@post), method: :create do %>
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bookmark"
-         width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <path d="M9 4h6a2 2 0 0 1 2 2v14l-5 -3l-5 3v-14a2 2 0 0 1 2 -2" />
-    </svg>
-  <% end %>
-<% end %>
+<div class="d-flex justify-content-center mt-5">
+  <div class="card-with-map rounded">
+    <div class="p-4" >
+      <img class="card-image" src="https://cdn.pixabay.com/photo/2016/11/18/14/39/beans-1834984_960_720.jpg" />
+      <div class="card-infos mt-3">
+        <h2 class="mb-1"><%= @post.title %></h2>
+        <h3 class="mb-1"><%= @post.category %></h3>
+        <h4 class="mb-3"><%= @post.address %></h4>
+        <p><%= @post.description %></p>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-user avatar-bordered" />
+        <div id="bookmark-icon">
+          <% bookmark_for_post = current_user.bookmarks.find_by(post: @post) %>
+          <% if bookmark_for_post %>
+            <%= button_to bookmark_path(bookmark_for_post), method: :delete do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bookmark"
+              width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="#c24a66" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 4h6a2 2 0 0 1 2 2v14l-5 -3l-5 3v-14a2 2 0 0 1 2 -2" />
+              </svg>
+            <% end %>
+          <% else %>
+            <%= button_to post_bookmarks_path(@post), method: :post do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bookmark"
+              width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 4h6a2 2 0 0 1 2 2v14l-5 -3l-5 3v-14a2 2 0 0 1 2 -2" />
+              </svg>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <div class="card-map rounded">
+  <%# keep this div to insert the map %>
+    <p>Placeholder for map: Whoever adds the map, you can delete this p element
+    and just add the map code inside the div with the class card-map 😃</p>
+  </div>
+  </div>
 </div>
