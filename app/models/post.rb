@@ -1,9 +1,11 @@
 class Post < ApplicationRecord
+  CATEGORIES = ["Art&Culture", "Restaurant", "Outdoors", "Best spots"]
   belongs_to :city
   belongs_to :user
   has_many :bookmarks
   # validates :city, presence: true
-  # validates :address, presence: true
+  validates :title, presence: true
+  validates :address, presence: true
 
 
   include PgSearch::Model
@@ -16,6 +18,19 @@ class Post < ApplicationRecord
     tsearch: { prefix: true }
   }
 
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+  before_validation :geocode, if: :will_save_change_to_address?
+
+  geocoded_by :address do |obj,results|
+    if geo = results.first
+      obj.latitude = geo.latitude
+      obj.longitude = geo.longitude
+      city_obj = City.find_by(name: geo.city)
+      # obj.city = city_obj ? city_obj : City.new(name: geo.city)
+      if city_obj
+        obj.city = city_obj
+      else
+        obj.city = City.new(name: geo.city)
+      end
+    end
+  end
 end
