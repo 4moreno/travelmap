@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), status: :see_other, notice: "You successfully created the post: #{@post.title}"
     else
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :category, :address)
+    params.require(:post).permit(:title, :description, :category, :address, photos:[])
   end
 
   def set_post

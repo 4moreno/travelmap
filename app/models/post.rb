@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :city
   belongs_to :user
   has_many :bookmarks
+  has_many_attached :photos
 
   include PgSearch::Model
   pg_search_scope :global_search,

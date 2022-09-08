@@ -7,7 +7,8 @@
         <h3 class="mb-1"><%= @post.category %></h3>
         <h4 class="mb-3"><%= @post.address %></h4>
         <p><%= @post.description %></p>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-user avatar-bordered" />
+        <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-user avatar-bordered" /> %>
+        <%= cl_image_tag @post.photo.key, height: 300, width: 400, crop: :fill %>
         <div id="bookmark-icon">
           <% bookmark_for_post = current_user.bookmarks.find_by(post: @post) %>
           <% if bookmark_for_post %>
