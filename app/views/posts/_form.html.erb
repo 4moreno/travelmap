@@ -1,0 +1,17 @@
+<%= simple_form_for post do |f| %>
+  <% if f.object.errors.messages[:city].present? %>
+    <p class="text-danger">This address is invalid and doesn't have a city</p>
+  <% end %>
+  <div class="container form-inputs">
+      <%= f.input :title %>
+      <%= f.input :category, collection: Post::CATEGORIES %>
+      <%= f.input :description %>
+      <%= f.input :address %>
+      <%# f.association :city %>
+      <%= f.submit "Save", class: "btn-orange mb-2"%>
+  </div>
+<% end %>
+
+<div class="container mt-3">
+  <%= link_to "Go to My map", "#" %>
+</div>
