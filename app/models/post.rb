@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :city
   belongs_to :user
   has_many :bookmarks
+  has_many_attached :photos
   # validates :city, presence: true
   validates :title, presence: true
   validates :address, presence: true
