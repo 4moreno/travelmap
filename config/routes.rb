@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :bookmarks, only: :create
   end
+  get "profile", action: :show, controller: "users"
   resources :bookmarks, only: :destroy
   resources :wishlists, only: :index
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
