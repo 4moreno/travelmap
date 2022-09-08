@@ -35,4 +35,10 @@
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+  <div class="justify-content-end">
+    <% if policy(@post).edit? %>
+    <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-dark"%>
+    <% end %>
+    <%= button_to "Destroy this restaurant", @post, method: :delete if policy(@post).destroy? %>
+  </div>
 </div>
