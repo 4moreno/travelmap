@@ -7,7 +7,8 @@ class BookmarksController < ApplicationController
     @bookmark.post = @post
     authorize @bookmark
     if @bookmark.save
-      redirect_to post_path(@post), status: :see_other, notice: "You successfully added #{@post.title} to wishlist!"
+      # takes current path and redirects back to it
+      redirect_to request.referer, status: :see_other, notice: "You successfully added #{@post.title} to wishlist!"
     end
   end
 
@@ -15,7 +16,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
     authorize @bookmark
     if @bookmark.destroy
-      redirect_to post_path(@bookmark.post), status: :see_other, notice: "You successfully removed #{@bookmark.post.title} from wishlist!"
+      redirect_to request.referer, status: :see_other, notice: "You successfully removed #{@bookmark.post.title} from wishlist!"
     end
   end
 end
