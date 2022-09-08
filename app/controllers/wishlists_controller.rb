@@ -1,4 +1,6 @@
 class WishlistsController < ApplicationController
-  def show
+  def index
+    @bookmarks = policy_scope(Bookmark)
+    @posts = Post.all
   end
 end

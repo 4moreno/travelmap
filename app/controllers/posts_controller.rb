@@ -8,18 +8,39 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
+    @markers = @posts.geocoded.map do |post|
+      {
+        lat: post.latitude,
+        lng: post.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { post: post }),
+      }
+    end
   end
 
   def show
+    @markers = [{
+      lat: @post.latitude,
+      lng: @post.longitude,
+      info_window: nil
+    }]
+    # @markers = @post.geocoded.map do |post|
+    #   {
+    #     lat: post.latitude,
+    #     lng: post.longitude,
+    #     info_window: render_to_string(partial: "info_window", locals: { post: post })
+    #   }
+    # end
   end
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
     authorize @post
-    if @post.save
+    if @post.valid?
+      @post.save
       redirect_to post_path(@post), status: :see_other, notice: "You successfully created the post: #{@post.title}"
     else
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
@@ -64,7 +85,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :category, :address)
+    params.require(:post).permit(:title, :description, :category, :address, photos:[])
   end
 
   def set_post

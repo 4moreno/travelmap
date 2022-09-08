@@ -1,0 +1,71 @@
+.btn-peach {
+  color: white;
+  padding: 8px 24px;
+  border: 1px solid $peach;
+  border-radius: 8px;
+  background-color: $peach;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 70ms ease-in-out;
+
+  &:hover {
+    background-color: $dark-peach;
+    border: 1px solid $dark-peach;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.btn-peach-outline {
+  color: $peach;
+  padding: 8px 24px;
+  border: 1px solid $peach;
+  border-radius: 8px;
+  background-color: transparent;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: transparent;
+    border: 1px solid $dark-peach;
+    color: $dark-peach;
+    text-decoration: none;
+  }
+}
+
+// .btn-grey {
+//   color: white;
+//   padding: 8px 24px;
+//   border: 1px solid $warm-gray;
+//   border-radius: 8px;
+//   background-color: $warm-gray;
+//   font-weight: 600;
+//   text-decoration: none;
+//   transition: background 70ms ease-in-out;
+
+//   &:hover {
+//     background-color: $dark-gray;
+//     border: 1px solid $dark-gray;
+//     color: white;
+//     text-decoration: none;
+//   }
+// }
+
+// .btn-grey-outline {
+//   color: $dark-gray;
+//   padding: 8px 24px;
+//   border: 1px solid $dark-gray;
+//   border-radius: 8px;
+//   background-color: transparent;
+//   font-weight: 600;
+//   text-decoration: none;
+//   transition: background 0.3s ease;
+
+//   &:hover {
+//     background-color: transparent;
+//     border: 1px solid $warm-gray;
+//     color: $warm-gray;
+//     text-decoration: none;
+//   }
+// }

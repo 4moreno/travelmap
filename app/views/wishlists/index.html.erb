@@ -1,0 +1,8 @@
+<h1>Wishlists#show</h1>
+<p>Find me in app/views/wishlists/show.html.erb</p>
+
+
+<%= current_user.id %>
+<% current_user.bookmarks.each do |bookmark|%>
+<%= bookmark.post.title %>
+<% end %>

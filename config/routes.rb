@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  get 'wishlists/show'
-  get 'bookmarks/new'
-  get 'bookmarks/create'
-  get 'bookmarks/destroy'
-  resources :posts
   devise_for :users
   root to: "pages#home"
+  resources :posts do
+    resources :bookmarks, only: :create
+  end
+  get "profile", action: :show, controller: "users"
+  resources :bookmarks, only: :destroy
+  resources :wishlists, only: :index
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

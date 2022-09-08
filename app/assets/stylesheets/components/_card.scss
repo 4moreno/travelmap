@@ -1,0 +1,120 @@
+// Cards: card without map (#index page) & card with map (#show page)
+
+.card {
+  display: flex;
+  justify-content: center;
+  min-height: 380px;
+  margin-top: 10px;
+  overflow: hidden;
+  background: white;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-with-map {
+  display: flex;
+  justify-content: center;
+  min-height: 410px;
+  margin-top: 10px;
+  overflow: hidden;
+  background: white;
+  width: 70%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-image {
+  height: 70%;
+  width: 340px;
+  object-fit: cover;
+}
+
+.card-user-contant #post-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-infos h2, h3 {
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.card-infos h2 {
+  color: $peach;
+  font-size: 16px;
+}
+
+.card .card-infos h2 {
+  &:hover {
+    color: $dark-peach;
+  }
+}
+
+.card-infos h3 {
+  font-size: 14px;
+  opacity: .7;
+}
+
+.card-infos h4 {
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.card-with-map h2, h3 {
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.card-with-map h2 {
+  font-size: 20px;
+}
+
+.card-with-map h3 {
+  font-size: 16px;
+  opacity: .8;
+}
+
+.card-with-map h4 {
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.card-with-map p {
+  font-size: 13px;
+  line-height: 1.1;
+  opacity: .7;
+  margin: 0;
+  font-weight: 400;
+}
+
+.card-infos {
+  padding: 16px;
+  position: relative;
+}
+
+.card-infos a {
+  text-decoration: none;
+}
+
+.card-infos #bookmark-icon {
+  position: absolute;
+  right: 66px;
+  top: -35px;
+  width: 40px;
+}
+
+#bookmark-icon button {
+  border: none;
+  background-color: transparent;
+}
+
+.card-user {
+  position: absolute;
+  right: 16px;
+  top: -36px;
+  width: 40px;
+}
