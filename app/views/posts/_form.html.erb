@@ -7,6 +7,7 @@
       <%= f.input :category, collection: Post::CATEGORIES %>
       <%= f.input :description %>
       <%= f.input :address %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%# f.association :city %>
       <%= f.submit "Save", class: "btn-orange mb-2"%>
   </div>

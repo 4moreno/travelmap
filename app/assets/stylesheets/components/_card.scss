@@ -23,8 +23,8 @@
 }
 
 .card-image {
-  height: 200px;
-  width: 100%;
+  height: 70%;
+  width: 340px;
   object-fit: cover;
 }
 
@@ -41,8 +41,14 @@
 }
 
 .card-infos h2 {
-  font-size: 16px;
   color: $peach;
+  font-size: 16px;
+}
+
+.card .card-infos h2 {
+  &:hover {
+    color: $dark-peach;
+  }
 }
 
 .card-infos h3 {
@@ -85,10 +91,13 @@
   font-weight: 400;
 }
 
-
 .card-infos {
   padding: 16px;
   position: relative;
+}
+
+.card-infos a {
+  text-decoration: none;
 }
 
 .card-infos #bookmark-icon {
