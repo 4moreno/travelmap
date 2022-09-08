@@ -13,8 +13,14 @@
 
 <div class="container">
   <% @posts.each do |post|  %>
-  <p> <mark><%= post.title %><mark> </p>
-  <p>  <mark><%= post.description %><mark> </p>
-  <p>  <mark><%= post.category %><mark> </p>
+
+  <p> <%= post.title.gsub(/em/, 'mark').html_safe %> </p>
+  <p> <%= post.description.gsub(/em/, 'mark').html_safe %> </p>
+  <p> <%= post.category.gsub(/em/, 'mark').html_safe %> </p>
   <% end  %>
 </div>
+
+
+
+<%# <em.*?>(.*?)<\/em> %>
+<%# "hello guys".gsub(/g.{3}/, 'le wagon') %>
