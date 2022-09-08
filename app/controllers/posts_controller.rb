@@ -50,9 +50,10 @@ class PostsController < ApplicationController
       attributesToHighlight: ['*']
     }
     raw_hits = Post.raw_search(query, search_options)["hits"]
-    raw_hits.map! do |hit|
+    raw_hits.map! do |hit, index|
       highlighted_res = hit["_highlightResult"]
       Post.new(
+        id: index,
         title: highlighted_res["title"]["value"],
         description: highlighted_res["description"]["value"],
         category: highlighted_res["category"]["value"],
