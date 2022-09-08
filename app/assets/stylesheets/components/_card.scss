@@ -43,6 +43,10 @@
 .card-infos h2 {
   font-size: 16px;
   color: $peach;
+
+  &:hover {
+    color: $dark-peach;
+  }
 }
 
 .card-infos h3 {
@@ -85,10 +89,13 @@
   font-weight: 400;
 }
 
-
 .card-infos {
   padding: 16px;
   position: relative;
+}
+
+.card-infos a {
+  text-decoration: none;
 }
 
 .card-infos #bookmark-icon {
