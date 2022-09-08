@@ -6,3 +6,16 @@
   text-align: center;
   font-size: small;
 }
+
+.mapboxgl-canvas {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.mapboxgl-canvas-container {
+  height: 100%;
+}
+
+.mapboxgl-canary {
+  height: 100%;
+}
