@@ -33,10 +33,9 @@
         </div>
       </div>
     </div>
-  <div class="card-map rounded">
-  <%# keep this div to insert the map %>
-    <p>Placeholder for map: Whoever adds the map, you can delete this p element
-    and just add the map code inside the div with the class card-map 😃</p>
-  </div>
+  <div class="rounded" style="width: 60%; height: 410px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
