@@ -41,6 +41,6 @@
     <% if policy(@post).edit? %>
     <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-dark"%>
     <% end %>
-    <%= button_to "Destroy this restaurant", @post, method: :delete if policy(@post).destroy? %>
+    <%= button_to 'Destroy', @post, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
   </div>
 </div>
