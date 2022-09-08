@@ -6,6 +6,9 @@ class BookmarksController < ApplicationController
     @post = Post.find(params[:post_id])
     @bookmark.post = @post
     authorize @bookmark
+    puts "##################################"
+    puts @bookmark.valid?
+    puts @bookmark.errors.messages
     if @bookmark.save
       # takes current path and redirects back to it
       redirect_to request.referer, status: :see_other, notice: "You successfully added #{@post.title} to wishlist!"
