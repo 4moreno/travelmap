@@ -41,9 +41,11 @@
 }
 
 .card-infos h2 {
-  font-size: 16px;
   color: $peach;
+  font-size: 16px;
+}
 
+.card .card-infos h2 {
   &:hover {
     color: $dark-peach;
   }
