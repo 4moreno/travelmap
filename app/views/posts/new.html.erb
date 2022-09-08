@@ -1,13 +1,5 @@
 <div class="container mt-3">
   <h1>Share your experience</h1>
 </div>
-<%= simple_form_for @post do |f| %>
-  <div class="container form-inputs">
-      <%= f.input :title %>
-      <%= f.input :category %>
-      <%= f.input :description %>
-      <%= f.input :address %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.submit "Save", class: "btn-orange mb-2"%>
-  </div>
-<% end %>
+
+<%= render "form", post: @post %>

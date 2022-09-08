@@ -22,8 +22,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
     authorize @post
-    if @post.save
+    if @post.valid?
+      @post.save
       redirect_to post_path(@post), status: :see_other, notice: "You successfully created the post: #{@post.title}"
     else
       render 'new', status: :unprocessable_entity
