@@ -14,10 +14,11 @@
 .card-with-map {
   display: flex;
   justify-content: center;
+  min-height: 410px;
   margin-top: 10px;
   overflow: hidden;
   background: white;
-  width: 40%;
+  width: 70%;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
@@ -107,9 +108,4 @@
   right: 16px;
   top: -36px;
   width: 40px;
-}
-
-.card-map {
-  background: white;
-  width: 70%;
 }
