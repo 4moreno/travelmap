@@ -1,1 +1,121 @@
 // Specific CSS for your home-page
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 140px 0;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-family: 'Paytone One', sans-serif;
+  font-size: 54px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 30px;
+  font-weight: 300;
+  color: white;
+  line-height: 1.0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.banner h4 {
+  font-weight: 500;
+  color: $peach;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.banner-info-wrapper {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.banner {
+  #explore-posts-link {
+    color: $peach;
+    padding: 8px 24px;
+    border: 1px solid $peach;
+    border-radius: 50px;
+    background-color: transparent;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color: transparent;
+      border: 1px solid $dark-peach;
+      color: $dark-peach;
+      text-decoration: none;
+    }
+  }
+}
+
+h2 {
+  opacity: 0.8;
+}
+
+.recommendations {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 26px;
+}
+
+.city-card {
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  display: flex;
+  font-family: 'Paytone One', sans-serif;
+  font-size: 32px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.recommendations {
+  a {
+    text-decoration: none;
+  }
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .recommendation-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .recommendation-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .recommendation-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .recommendation-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .recommendation-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

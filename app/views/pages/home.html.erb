@@ -1,9 +1,35 @@
-
-<div class="container mt-3">
-  <h1>Welcome to TravelMap</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1568444438385-ece31a33ce78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);">
+  <div class="container text-center">
+    <h1 class="mb-5">Welcome to TravelMap</h1>
+    <div class="banner-info-wrapper mb-5">
+      <h4 class="mt-5"><small>- The Social Network for Travellers -</small></h4>
+      <p class="mt-5">Get inspired by fellow TravelMappers & inspire others by sharing your own experiences</p>
+    </div>
+    <%= link_to "Explore all experiences", posts_path, id: "explore-posts-link"%>
+  </div>
 </div>
+<div class="my-4 p-5">
+  <h2 class="mb-4 text-center">Why not travel to ... ?</h2>
+  <div class="recommendations">
+    <%= link_to posts_path(query: "oslo") do %>
+      <div class="city-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1566894069245-ab8428a4c9c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80)">
+        Oslo
+      </div>
+    <% end %>
 
+    <%= link_to posts_path(query: "berlin") do %>
+      <div class="city-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1585405327087-ccddc9329fa5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)">
+        Berlin
+      </div>
+    <% end %>
 
+    <%= link_to posts_path(query: "madrid") do %>
+      <div class="city-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1564565946561-e738711bdbd1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)">
+        Madrid
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <%# Jose wrote this search code %>
 <% if false %>

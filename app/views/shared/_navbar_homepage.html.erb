@@ -1,10 +1,10 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-pages"
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top"
   data-controller="navbar"
   data-action="scroll@window->navbar#updateNavbar"
 >
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "logo-dark-teal.png" %>
+      <%= image_tag "logo-peach.png" %>
     <% end %>
       <div class="searchbar">
         <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
@@ -32,9 +32,8 @@
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Whole world posts", posts_path, class: "dropdown-item" %>
-              <%= link_to "My map", profile_path, class: "dropdown-item" %>
-              <%= link_to "My wishlist", wishlists_path, class: "dropdown-item" %>
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
