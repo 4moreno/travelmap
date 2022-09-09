@@ -10,6 +10,11 @@ ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
+puts "delete DB"
+Post.destroy_all
+City.destroy_all
+User.destroy_all
+
 User.create(username: "Dareos", email: "dareos@lewagon.com", password: "111111")
 User.create(username: "Yuki", email: "yuki@lewagon.com", password: "222222")
 User.create(username: "Sonja", email: "sonja@dlewagon.com", password: "333333")
