@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  CATEGORIES = ["Art&Culture", "Restaurant", "Outdoors", "Best spots"]
+  CATEGORIES = ["Art&Culture", "Restaurants", "Outdoors", "Best spots", "Entertaiments"]
   belongs_to :city
   belongs_to :user
   has_many :bookmarks
