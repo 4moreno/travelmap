@@ -22,3 +22,12 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
 }
+
+.dropdown-menu a {
+  background-color: $dark-teal;
+
+  &:hover {
+    background-color: $teal;
+    color: white;
+  }
+}
