@@ -7,7 +7,7 @@ class WishlistPolicy < ApplicationPolicy
   end
 
   def index?
+    # record.user == user
+   true
   end
-
-
 end
