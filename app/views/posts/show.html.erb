@@ -40,7 +40,7 @@
   <div class="justify-content-end">
     <% if policy(@post).edit? %>
     <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-dark"%>
-    <% end %>
     <%= button_to 'Destroy', @post, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
+    <% end %>
   </div>
 </div>
