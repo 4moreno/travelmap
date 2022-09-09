@@ -1,14 +1,13 @@
-<h1>Wishlists#show</h1>
-<p>Find me in app/views/wishlists/show.html.erb</p>
 
-
-<%= current_user.id %>
-<% current_user.bookmarks.each do |bookmark|%>
-<%= bookmark.post.title %>
-<% end %>
 
 <div style="width: 100%; height: 300px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+<div class="container">
+  <%= current_user.id %>
+  <% current_user.bookmarks.each do |bookmark|%>
+  <%= bookmark.post.title %>
+  <% end %>
 </div>
