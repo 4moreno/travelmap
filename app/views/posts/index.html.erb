@@ -11,7 +11,9 @@
       <div class="d-flex justify-content-center">
         <div class="card rounded">
           <div class="p-4" >
-            <img class="card-image" src="https://cdn.pixabay.com/photo/2016/11/18/14/39/beans-1834984_960_720.jpg" />
+            <% post.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, class: "card-image" %>
+            <% end %>
             <div class="card-infos mt-3">
               <%= link_to post_path(post) do %>
                 <h2 class="mb-1"><%= post.title %></h2>
