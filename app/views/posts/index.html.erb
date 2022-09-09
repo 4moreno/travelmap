@@ -4,15 +4,11 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
+
+
 <div class="container mt-5">
   <div class="row justify-content-center">
   <% @posts.each do |post|  %>
- <%# HEAD %>
-
-  <p> <%= post.title.gsub(/em/, 'mark').html_safe %> </p>
-  <p> <%= post.description.gsub(/em/, 'mark').html_safe %> </p>
-  <p> <%= post.category.gsub(/em/, 'mark').html_safe %> </p>
-<%# HEAD end %>
     <div class="col-3">
       <div class="d-flex justify-content-center">
         <div class="card rounded">
@@ -52,7 +48,6 @@
         </div>
       </div>
     </div>
-<%# >>>>>>> algolia-correct %>
   <% end  %>
   </div>
 </div>

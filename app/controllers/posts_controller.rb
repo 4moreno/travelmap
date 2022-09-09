@@ -8,12 +8,22 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
-    @markers = @posts.geocoded.map do |post|
-      {
-        lat: post.latitude,
-        lng: post.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { post: post }),
-      }
+    if params[:query].present?
+      @markers = @posts.map do |post|
+        {
+          lat: post.latitude,
+          lng: post.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { post: post }),
+        }
+      end
+    else
+      @markers = @posts.geocoded.map do |post|
+        {
+          lat: post.latitude,
+          lng: post.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { post: post }),
+        }
+      end
     end
   end
 
@@ -72,15 +82,18 @@ class PostsController < ApplicationController
     }
     raw_hits = Post.raw_search(query, search_options)["hits"]
     raw_hits.map! do |hit, index|
+
       highlighted_res = hit["_highlightResult"]
-      Post.new(
-        id: index,
-        title: highlighted_res["title"]["value"],
-        description: highlighted_res["description"]["value"],
-        category: highlighted_res["category"]["value"],
-        address: highlighted_res["address"]["value"],
-        # city_name: highlighted_res["city_name"]["value"]
-      )
+      # new_post = Post.new(
+      #   id: index,
+      #   title: highlighted_res["title"]["value"],
+      #   description: highlighted_res["description"]["value"],
+      #   category: highlighted_res["category"]["value"],
+      #   address: highlighted_res["address"]["value"],
+      #   # city_name: highlighted_res["city_name"]["value"]
+      # )
+      # new_post.geocode
+      Post.find(hit["id"])
     end
   end
 
