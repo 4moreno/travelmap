@@ -1,14 +1,18 @@
-.navbar-pages {
+.navbar-lewagon {
   justify-content: space-between;
-  background: $peach;
+  background: transparent;
   transition: 0.5s background-color ease;
 }
 
-.navbar-pages .navbar-collapse {
+.navbar-lewagon-peach {
+  background-color: $peach;
+}
+
+.navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-pages .navbar-brand img {
+.navbar-lewagon .navbar-brand img {
   width: 80px;
 }
 
