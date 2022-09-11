@@ -19,17 +19,11 @@ export default class extends Controller {
 
     const nav_zoom = new mapboxgl.NavigationControl();
     this.map.addControl(nav_zoom, 'bottom-left');
-
-    const user_loc =
-      new mapboxgl.GeolocateControl({
-          positionOptions: {enableHighAccuracy: true},
-          trackUserLocation: true,
-          showUserHeading: true,
-      });
-
+    const user_loc = new mapboxgl.GeolocateControl();
     this.map.addControl(user_loc, 'bottom-left');
 
 
+  }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
