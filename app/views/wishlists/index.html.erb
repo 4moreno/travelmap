@@ -1,14 +1,12 @@
-<h1>Wishlists#show</h1>
-<p>Find me in app/views/wishlists/show.html.erb</p>
+<div style="width: 200%; height: 600px; border: 20px solid #000000;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
 
 
 <%= current_user.id %>
 <% current_user.bookmarks.each do |bookmark|%>
 <%= bookmark.post.title %>
 <% end %>
-
-<div style="width: 100%; height: 300px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>

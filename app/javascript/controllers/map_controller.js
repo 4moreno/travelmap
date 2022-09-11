@@ -12,13 +12,24 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/mapbox/satellite-streets-v11"
     })
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-                                            mapboxgl: mapboxgl }))
-  }
+
+    const nav_zoom = new mapboxgl.NavigationControl();
+    this.map.addControl(nav_zoom, 'bottom-left');
+
+    const user_loc =
+      new mapboxgl.GeolocateControl({
+          positionOptions: {enableHighAccuracy: true},
+          trackUserLocation: true,
+          showUserHeading: true,
+      });
+
+    this.map.addControl(user_loc, 'bottom-left');
+
+
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
@@ -41,4 +52,5 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
+
 }
