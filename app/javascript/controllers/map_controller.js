@@ -22,6 +22,23 @@ export default class extends Controller {
     const user_loc = new mapboxgl.GeolocateControl();
     this.map.addControl(user_loc, 'bottom-left');
 
+    var mapboxgl = require('mapbox-gl');
+    var MapboxDirections = require('@mapbox/mapbox-gl-directions');
+
+    var directions = new MapboxDirections({
+      accessToken: 'mapboxgl.accessToken',
+      unit: 'metric',
+      profile: 'mapbox/cycling'
+    });
+
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v9'
+    });
+
+    map.addControl(directions, 'top-left');
+
+
 
   }
 
