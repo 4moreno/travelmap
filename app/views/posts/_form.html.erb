@@ -3,16 +3,21 @@
     <p class="text-danger">This address is invalid and doesn't have a city</p>
   <% end %>
   <div class="container form-inputs">
-      <%= f.input :title %>
-      <%= f.input :category, collection: Post::CATEGORIES %>
-      <%= f.input :description %>
-      <%= f.input :address %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.input :title, input_html: { class: "rounded-pill input" } %>
+      <%= f.input :category,
+                  as: :radio_buttons,
+                  collection_wrapper_tag: 'div',
+                  collection_wrapper_class: 'category-wrapper',
+                  item_wrapper_class: 'category-item',
+                  input_html: { class: "rounded-pill input category-selector" },
+                  collection: Post::CATEGORIES %>
+      <%= f.input :description, label: "Describe your experience", input_html: { class: "rounded-pill input" }  %>
+      <%= f.input :address, input_html: { class: "rounded-pill input" }  %>
+      <%= f.input :photos, as: :file, label: "Upload pictures", input_html: { multiple: true, class: "rounded-pill input" } %>
       <%# f.association :city %>
-      <%= f.submit "Save", class: "btn-orange mb-2"%>
+      <%= f.submit "Save", class: "btn-peach mb-4 w-100" %>
   </div>
 <% end %>
-
-<div class="container mt-3">
-  <%= link_to "Go to My map", profile_path %>
+<div class="container mt-4">
+  <%= link_to "Go to My map", profile_path, class: "btn-peach-outline" %>
 </div>
