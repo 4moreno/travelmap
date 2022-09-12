@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :posts
   has_one :wishlist
   has_many :bookmarks, through: :wishlist
+  has_many :chatrooms
+  has_many :messages
 
   after_create :create_wishlist
 
