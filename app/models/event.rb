@@ -7,6 +7,16 @@ class Event < ApplicationRecord
 
   default_scope -> { order(:start_time) }
 
+  include PgSearch::Model
+  pg_search_scope :filter_by_city,
+  against: [ :city_id ],
+  associated_against: {
+    city: :name
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
+
   def time
     "#{start_time.strftime('%I:%M %p')} - #{end_time.strftime('%I:%M %p')}"
   end

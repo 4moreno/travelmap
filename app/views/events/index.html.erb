@@ -1,6 +1,14 @@
 <div class="container mt-5">
   <h1 class="text-center">Calendar</h1>
-    <h2>There are %= @events %> during the selected month (date.month_names)</h2>
+  <%= form_with url: '/events', method: :get, class: "d-flex" do %>
+    <%= text_field_tag :city,
+      params[:city],
+      class: "form-control",
+      placeholder: "Filter by city"
+    %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
   <%= month_calendar(events: @events, end_attribute: :end_time) do |date, events| %>
     <%= date %>
 
