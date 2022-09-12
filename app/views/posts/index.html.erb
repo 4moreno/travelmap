@@ -24,14 +24,15 @@
           </div>
         </div>
       </div>
+      <!--Modal effect -->
       <div class="modal fade" id="modal_<%= dom_id(post) %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
          <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><%= post.title %></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+          <!--card detail -->
             <div class="d-flex justify-content-center mt-3">
               <div class="card-with-map rounded">
                 <div class="p-2" >
@@ -68,8 +69,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          <!--you can delete footer, if you don't need-->
           </div>
         </div>
       </div>
