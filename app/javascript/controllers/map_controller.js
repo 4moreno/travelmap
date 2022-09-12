@@ -12,9 +12,10 @@ export default class extends Controller {
 
     let map_style = "mapbox://styles/mapbox/streets-v10"
 
-    if (document.getElementsByClassName("mapstyle_white").length === 1) {
-      map_style = "mapbox://styles/mapbox/light-v10"
-    }
+    // when you want to change the map style
+    // if (document.getElementsByClassName("mapstyle_white").length === 1) {
+    //   map_style = "mapbox://styles/mapbox/light-v10"
+    // }
 
     this.map = new mapboxgl.Map({
       container: this.element,
