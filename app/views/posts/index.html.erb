@@ -20,7 +20,7 @@
               <% end %>
               <h3 class="mb-1"><%= post.category %></h3>
               <h4 class="mb-3"><%= post.address %></h4>
-              <%= render(partial: "shared/avatar") %>
+              <%= render(partial: "shared/avatar", locals: {post: post}) %>
               <%= render(partial: "shared/bookmark", locals: { post: post}) %>
             </div>
           </div>
