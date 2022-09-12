@@ -5,10 +5,13 @@
     <%= date %>
 
     <% events.each do |event| %>
-      <div class="event">
-        <p><%= event.name %></p>
-        <%= render(partial: "shared/avatar") %>
-      </div>
+      <%= link_to event_path(event) do %>
+        <div class="event">
+          <p><%= event.name %></p>
+          <%= render(partial: "shared/avatar_profile") %>
+          <small><%= event.time unless event.multi_days? %></small>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>

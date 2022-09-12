@@ -7,7 +7,8 @@
         <%= f.input :name %>
         <%= f.input :start_time, html5: true %>
         <%= f.input :end_time, html5: true %>
-        <%= f.association :city %>
+        <%= f.input :address %>
+        <%= f.input :description %>
         <%= f.submit "Save" %>
     </div>
   <% end %>
