@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts
   has_one :wishlist
   has_many :bookmarks, through: :wishlist
+  has_one_attached :avatar
 
   after_create :create_wishlist
 

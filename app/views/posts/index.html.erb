@@ -20,7 +20,7 @@
               <% end %>
               <h3 class="mb-1"><%= post.category %></h3>
               <h4 class="mb-3"><%= post.address %></h4>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-user avatar-bordered" />
+              <%= render(partial: "shared/avatar") %>
               <%= render(partial: "shared/bookmark", locals: { post: post}) %>
             </div>
           </div>
