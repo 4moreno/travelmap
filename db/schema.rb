@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_08_094233) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_084131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_094233) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.date "start_time"
+    t.date "end_time"
+    t.bigint "user_id", null: false
+    t.bigint "city_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_events_on_city_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "address"
     t.string "title"
@@ -96,6 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_094233) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "wishlists"
+  add_foreign_key "events", "cities"
+  add_foreign_key "events", "users"
   add_foreign_key "posts", "cities"
   add_foreign_key "posts", "users"
   add_foreign_key "wishlists", "users"
