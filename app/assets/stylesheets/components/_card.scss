@@ -3,7 +3,7 @@
 .card {
   display: flex;
   justify-content: center;
-  min-height: 380px;
+  max-height: 300px;
   margin-top: 10px;
   overflow: hidden;
   background: white;
@@ -23,9 +23,9 @@
 }
 
 .card-image {
-  height: 70%;
-  width: 255px;
-  object-fit: cover;
+  max-height: 400px;
+  width: 100%;
+  object-fit: fill;
 }
 
 .card-user-contant #post-img {
