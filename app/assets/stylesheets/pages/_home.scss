@@ -58,16 +58,17 @@ h2 {
   opacity: 0.8;
 }
 
-.recommendations {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 26px;
-}
+// .recommendations {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr 1fr;
+//   grid-gap: 26px;
+// }
 
 .city-card {
   background-size: cover;
   background-position: center;
   height: 250px;
+  width: 100%;
   display: flex;
   font-family: 'Paytone One', sans-serif;
   font-size: 32px;
@@ -118,4 +119,17 @@ h2 {
   .recommendation-cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
+
+// Scrollbar
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: $peach;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $teal;
 }
