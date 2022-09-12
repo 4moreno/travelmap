@@ -49,7 +49,7 @@ export default class extends Controller {
       profile: 'mapbox/cycling'
     });
 
-    this.map.addControl(directions, 'bottom-left');
+    this.map.addControl(directions, 'top-left');
 
 
   }
