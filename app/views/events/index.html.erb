@@ -1,11 +1,13 @@
 <div class="container mt-5">
   <h1 class="text-center">Calendar</h1>
+    <h2>There are %= @events %> during the selected month (date.month_names)</h2>
   <%= month_calendar(events: @events, end_attribute: :end_time) do |date, events| %>
     <%= date %>
 
     <% events.each do |event| %>
       <div class="event">
         <p><%= event.name %></p>
+        <%= render(partial: "shared/avatar") %>
       </div>
     <% end %>
   <% end %>
