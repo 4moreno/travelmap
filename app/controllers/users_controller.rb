@@ -6,5 +6,14 @@ class UsersController < ApplicationController
 
     @posts = current_user.posts
     authorize @posts
+
+    @markers = @posts.geocoded.map do |post|
+      {
+        lat: post.latitude,
+        lng: post.longitude,
+        city: post.city_id,
+        filter_cards: true
+      }
+    end
   end
 end
