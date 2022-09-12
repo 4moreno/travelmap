@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
+import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions"
+
 
 export default class extends Controller {
   static values = {
@@ -10,7 +12,7 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
-    let map_style = "mapbox://styles/mapbox/streets-v10"
+    // let map_style = "mapbox://styles/mapbox/streets-v10"
 
     // when you want to change the map style
     // if (document.getElementsByClassName("mapstyle_white").length === 1) {
@@ -19,11 +21,9 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-<<<<<<< HEAD
       style: "mapbox://styles/mapbox/satellite-streets-v11"
-=======
-      style: map_style
->>>>>>> master
+      // style: map_style
+
     })
 
     // this.map.style = "mapbox://styles/mapbox/light-v10";
@@ -32,25 +32,24 @@ export default class extends Controller {
 
     const nav_zoom = new mapboxgl.NavigationControl();
     this.map.addControl(nav_zoom, 'bottom-left');
-    const user_loc = new mapboxgl.GeolocateControl();
+    const user_loc = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      showUserLocation: true
+    });
     this.map.addControl(user_loc, 'bottom-left');
 
-    var mapboxgl = require('mapbox-gl');
-    var MapboxDirections = require('@mapbox/mapbox-gl-directions');
+    // const MapboxDirections = require('@mapbox/mapbox-gl-directions');
 
-    var directions = new MapboxDirections({
-      accessToken: 'mapboxgl.accessToken',
+    let directions = new MapboxDirections({
+      accessToken: this.apiKeyValue,
       unit: 'metric',
       profile: 'mapbox/cycling'
     });
 
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v9'
-    });
-
-    map.addControl(directions, 'top-left');
-
+    this.map.addControl(directions, 'bottom-left');
 
 
   }
@@ -86,8 +85,7 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
-<<<<<<< HEAD
-=======
+
   showHideCards(marker) {
     // console.log(marker)
     let elements = document.getElementsByClassName("hide_city");
@@ -100,5 +98,5 @@ export default class extends Controller {
       e.style.display = "block";
     }
   }
->>>>>>> master
+
 }
