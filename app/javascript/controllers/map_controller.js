@@ -2,7 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions"
 
-
 export default class extends Controller {
   static values = {
     apiKey: String,
@@ -41,7 +40,8 @@ export default class extends Controller {
     });
     this.map.addControl(user_loc, 'bottom-left');
 
-    // const MapboxDirections = require('@mapbox/mapbox-gl-directions');
+    // var mapboxgl = require('mapbox-gl');
+    // var MapboxDirections = require('@mapbox/mapbox-gl-directions');
 
     let directions = new MapboxDirections({
       accessToken: this.apiKeyValue,
@@ -51,9 +51,7 @@ export default class extends Controller {
 
     this.map.addControl(directions, 'top-left');
 
-    map.addControl(new mapboxgl.NavigationControl());
 
-// Edificios en 3D
 
 
 
@@ -61,6 +59,22 @@ export default class extends Controller {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+  }
+
+  #addMarkersToMap() {
+    this.markersValue.forEach((marker) => {
+      if (marker.info_window) {
+        const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+        new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
+        .addTo(this.map)
+      } else {
+        new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(this.map)
+      }
+    });
   }
 
 
