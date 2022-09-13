@@ -60,6 +60,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_090307) do
     t.index ["wishlist_id"], name: "index_bookmarks_on_wishlist_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.index ["receiver_id"], name: "index_chatrooms_on_receiver_id"
+    t.index ["sender_id"], name: "index_chatrooms_on_sender_id"
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -82,6 +92,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_090307) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "address"
     t.string "title"
@@ -95,6 +115,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_090307) do
     t.float "longitude"
     t.index ["city_id"], name: "index_posts_on_city_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_sessions_on_chatroom_id"
+    t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -125,7 +154,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_090307) do
   add_foreign_key "bookmarks", "wishlists"
   add_foreign_key "events", "cities"
   add_foreign_key "events", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "posts", "cities"
   add_foreign_key "posts", "users"
+  add_foreign_key "sessions", "chatrooms"
+  add_foreign_key "sessions", "users"
   add_foreign_key "wishlists", "users"
 end
