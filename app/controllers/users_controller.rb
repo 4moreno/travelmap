@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def show
-    if !current_user
-      redirect_to root_path
-    end
-
+    redirect_to root_path unless current_user
     @posts = current_user.posts
     authorize @posts
+    geocode
+  end
 
+  def geocode
     @markers = @posts.geocoded.map do |post|
       {
         lat: post.latitude,
