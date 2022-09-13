@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_094744) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_13_140201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_094744) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_attendances_on_event_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
   create_table "bookmarks", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "wishlist_id", null: false
@@ -55,16 +64,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_094744) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "sender_id"
-    t.bigint "receiver_id"
-    t.index ["receiver_id"], name: "index_chatrooms_on_receiver_id"
-    t.index ["sender_id"], name: "index_chatrooms_on_sender_id"
   end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_time", precision: nil
+    t.datetime "end_time", precision: nil
+    t.bigint "user_id", null: false
+    t.bigint "city_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.string "address"
+    t.float "longitude"
+    t.float "latitude"
+    t.index ["city_id"], name: "index_events_on_city_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -92,6 +113,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_094744) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_sessions_on_chatroom_id"
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -114,11 +144,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_094744) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "attendances", "events"
+  add_foreign_key "attendances", "users"
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "wishlists"
+  add_foreign_key "events", "cities"
+  add_foreign_key "events", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "cities"
   add_foreign_key "posts", "users"
+  add_foreign_key "sessions", "chatrooms"
+  add_foreign_key "sessions", "users"
   add_foreign_key "wishlists", "users"
 end

@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
+  resources :events do
+    resources :attendances, only: [:index, :create]
+  end
+  resources :attendances, only: :destroy
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

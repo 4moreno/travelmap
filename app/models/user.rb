@@ -6,9 +6,10 @@ class User < ApplicationRecord
 
   has_many :posts
   has_one :wishlist
+  has_many :events
   has_many :bookmarks, through: :wishlist
-  has_many :chatrooms
   has_many :messages
+  has_many :attendances
   has_one_attached :avatar
 
 

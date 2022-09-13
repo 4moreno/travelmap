@@ -1,32 +1,81 @@
-<div style="width: 100%; height: 300px;"
+
+
+
+<!--this is index page cards and map-->
+<div style="width: 100%; height: 400px;"
+
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
+
 <div class="container mt-5">
   <div class="row justify-content-center">
-  <% @posts.each do |post|  %>
-    <div class="col-3">
-      <div class="d-flex justify-content-center">
-        <div class="card rounded">
-          <div class="p-2">
-            <% post.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, class: "card-image" %>
-            <% end %>
-            <div class="card-infos mt-3">
-              <%= link_to post_path(post) do %>
-                <h2 class="mb-1"><%= post.title %></h2>
+    <% @posts.each do |post|  %>
+      <div class="col-3">
+        <div class="d-flex justify-content-center">
+          <div class="card rounded">
+            <div class="p-1" style="height: 260px">
+              <% post.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, class: "card-image" %>
               <% end %>
-              <h3 class="mb-1"><%= post.category %></h3>
-              <h4 class="mb-3"><%= post.address %></h4>
-              <%= render(partial: "shared/avatar", locals: {post: post}) %>
-              <%= render(partial: "shared/bookmark", locals: { post: post}) %>
+              <div class="card-infos mt-3">
+                <h2 class="mb-1 title-btn" data-bs-toggle="modal" data-bs-target="#modal_<%= dom_id(post) %>"><%= post.title %></h2>
+                <h3 class="mb-1"><%= post.category %></h3>
+                <h4 class="mb-3"><%= post.address %></h4>
+                  <%= render(partial: "shared/bookmark", locals: { post: post}) %>
+                  <div id="avatarpost">
+                  <%= render(partial: "shared/avatar", locals: {post: post}) %>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <!--Modal effect -->
+      <div class="modal fade" id="modal_<%= dom_id(post) %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-body">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <!--card detail(show page) -->
+            <div class="d-flex justify-content-center mt-3">
+              <div class="card-with-map rounded">
+                <div class="p-2" >
+                  <% post.photos.each do |photo| %>
+                    <%= cl_image_tag photo.key, class: "card-image" %>
+                  <% end %>
+                  <div class="card-infos mt-3 d-flex justify-content-between">
+                    <div>
+                      <h2 class="mb-1"><%= post.title %></h2>
+                      <%# h3 with category was here replaced by Antonio for a button without link L17 %>
+                      <h4 class="mb-3"><%= post.address %></h4>
+                      <p><%= post.description %></p>
+                       <%= render 'shared/avatar', post: post %>
+                    </div>
+                    <div class="d-flex align-items-end flex-column">
+                        <div class="p-2">
+                          <%= link_to post.category, "#", class: "btn btn-primary"%>
+                        </div>
+                        <div class="mt-auto p-2">
+                          <% if policy(post).edit? %>
+                            <%= link_to icon('fa-solid', 'pen-to-square'), edit_post_path(post)%>
+                            <%= link_to icon('fa-solid', 'trash'), post, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
+                          <% end %>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="rounded" style="width: 60%;"
+                    data-controller="map"
+                    data-map-markers-value="<%= [{lat: post.latitude, lng: post.longitude}].to_json %>"
+                    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
-  <% end  %>
+    <% end %>
   </div>
 </div>
