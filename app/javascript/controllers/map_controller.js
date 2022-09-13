@@ -52,7 +52,7 @@ export default class extends Controller {
     this.map.addControl(directions, 'top-left');
 
 
-
+  }
 
 
   #fitMapToMarkers() {
