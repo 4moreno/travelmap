@@ -11,7 +11,7 @@
           <div class="card rounded">
             <div class="p-2" >
               <% post.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, class: "card-image" %>
+                <%= cl_image_tag photo.key, class: "card-size" %>
               <% end %>
             </div>
             <div class="card-infos mt-3">
