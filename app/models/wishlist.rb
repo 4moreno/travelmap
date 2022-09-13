@@ -2,7 +2,7 @@ class Wishlist < ApplicationRecord
   belongs_to :user
   has_many :bookmarks, dependent: :destroy
   has_many :posts, through: :bookmarks
-
+  
   after_validation :geocode, if: :will_save_change_to_address?
 
   geocoded_by :address do |obj,results|
