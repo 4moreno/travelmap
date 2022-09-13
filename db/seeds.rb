@@ -18,9 +18,9 @@ City.destroy_all
 User.destroy_all
 
 User.create(username: "Dareos", email: "dareos@lewagon.com", password: "111111")
-User.create(username: "Yuki", email: "yuki@lewagon.com", password: "222222")
-User.create(username: "Sonja", email: "sonja@dlewagon.com", password: "333333")
-User.create(username: "Jose", email: "jose@lewagon.com", password: "444444")
+# User.create(username: "Yuki", email: "yuki@lewagon.com", password: "222222")
+# User.create(username: "Sonja", email: "sonja@dlewagon.com", password: "333333")
+# User.create(username: "Jose", email: "jose@lewagon.com", password: "444444")
 
 City.create([{ name: "London" }, { name: "Madrid" }, { name: "Berlin" }, { name: "Oslo" }])
 
@@ -45,7 +45,7 @@ Post.create(
 )
 
 Post.create(
-  user_id: "3",
+  user_id: "1",
   city_id: "2",
   address: "Calle Azcona 46, 28028 Madrid Spain",
   title: "Highly recommended! `Los Montes de Galicia`",
@@ -54,7 +54,7 @@ Post.create(
 )
 
 Post.create(
-  user_id: "4",
+  user_id: "1",
   city_id: "3",
   address: "Pariser Platz, 10117 Berlin, Germany",
   title: "iconic gate, Brandenburger Tor!",
@@ -64,7 +64,7 @@ Post.create(
 )
 
 Post.create(
-  user_id: "4",
+  user_id: "1",
   city_id: "4",
   address: "0891 Oslo, Norway",
   title: "A beautiful spot for short-hiking!",
@@ -74,7 +74,7 @@ Post.create(
 )
 
 Post.create(
-  user_id: "2",
+  user_id: "1",
   city_id: "1",
   address: "21 Wellington St, London WC2E 7RQ, United Kingdom",
   title: "Enjoyed Lion king theatre!",
@@ -85,7 +85,7 @@ Post.create(
 )
 
 Post.create(
-  user_id: "3",
+  user_id: "1",
   city_id: "3",
   address: "Unter den Linden 2, 10117 Berlin, Germany",
   title: "Deutsches Historisches Museum",
