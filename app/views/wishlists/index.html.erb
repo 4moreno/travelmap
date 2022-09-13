@@ -13,7 +13,7 @@
               </div>
               <div class="card-infos mt-2">
                 <h2><%= bookmark.post.title %></h2>
-
+                 <%= cl_image_tag bookmark.post.user.avatar.key, class: "avatar dropdown-toggle" %>
               </div>
 
           </div>

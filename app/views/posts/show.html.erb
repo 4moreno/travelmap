@@ -10,7 +10,7 @@
           <%# h3 with category was here replaced by Antonio for a button without link L17 %>
           <h4 class="mb-3"><%= @post.address %></h4>
           <p><%= @post.description %></p>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-user avatar-bordered"/>
+          <%= cl_image_tag @post.user.avatar.key, class: "avatar dropdown-toggle" %>
         </div>
         <div class="d-flex align-items-end flex-column">
           <div class="p-2">

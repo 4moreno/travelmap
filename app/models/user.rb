@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :bookmarks, through: :wishlist
   has_many :chatrooms
   has_many :messages
+  has_one_attached :avatar
+
 
   after_create :create_wishlist
 
