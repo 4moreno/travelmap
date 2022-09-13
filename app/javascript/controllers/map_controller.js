@@ -51,33 +51,11 @@ export default class extends Controller {
 
     this.map.addControl(directions, 'top-left');
 
+    map.addControl(new mapboxgl.NavigationControl());
 
-  }
+// Edificios en 3D
 
-  #addMarkersToMap() {
-    this.markersValue.forEach((marker) => {
-      if (marker.filter_cards){
-        const filter = new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat])
-        .addTo(this.map);
-        // filtering the marker with city_id
-        filter.getElement().addEventListener('click', () => {
-          this.showHideCards(marker)
-        });
-      }
-      else if(marker.info_window) {
-        const popup = new mapboxgl.Popup().setHTML(marker.info_window)
-        new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(this.map)
-      } else {
-        new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(this.map)
-      }
-    });
-  }
+
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
