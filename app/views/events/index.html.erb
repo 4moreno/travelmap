@@ -16,7 +16,7 @@
       <%= link_to event_path(event) do %>
         <div class="event">
           <p><%= event.name %></p>
-          <%= render(partial: "shared/avatar_profile") %>
+          <%= render "shared/avatar_owner", event_owner: event.user %>
           <small><%= event.time unless event.multi_days? %></small>
         </div>
       <% end %>
