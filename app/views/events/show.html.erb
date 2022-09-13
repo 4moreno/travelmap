@@ -13,4 +13,13 @@
   <circle cx="12" cy="11" r="3" />
   <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
 </svg> <%= @event.address %></p>
+<div>
+  <% attendance_for_event = current_user.attendances.find_by(event: @event) %>
+  <% if attendance_for_event %>
+      <%= button_to "Don't join", attendance_path(attendance_for_event), method: :delete %>
+  <% else %>
+      <%= button_to "Join", event_attendances_path(@event), method: :post %>
+  <% end %>
+</div>
+
 <p>Participants => below show avatars of people that want the event</p>
