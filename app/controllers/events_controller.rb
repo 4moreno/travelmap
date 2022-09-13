@@ -35,6 +35,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @participants = @event.users
   end
 
   def edit

@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   belongs_to :user
   belongs_to :city
   has_many :attendances, dependent: :destroy
+  has_many :users, through: :attendances
 
   validates :start_time, presence: true
   validates :end_time, presence: true

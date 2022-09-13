@@ -22,7 +22,12 @@
   <% end %>
 </div>
 
-<p>Participants => below show avatars of people that want the event</p>
+<p>Participating:</p>
+<div class="avatar-img-event-wrapper">
+  <% @participants.each do |participant|  %>
+    <%= cl_image_tag participant.avatar.key, class: "avatar-img-event" %>
+  <% end %>
+</div>
 
 <div class="mt-auto mt-2">
   <% if policy(@event).edit? %>
