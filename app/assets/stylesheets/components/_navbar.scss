@@ -1,6 +1,6 @@
 .navbar-pages {
   justify-content: space-between;
-  background: black;
+  background: $peach;
   transition: 0.5s background-color ease;
 }
 
@@ -24,10 +24,10 @@
 }
 
 .dropdown-menu a {
-  background-color: black;
+  background-color: $dark-teal;
 
   &:hover {
-    background-color: black;
+    background-color: $teal;
     color: white;
   }
 }
