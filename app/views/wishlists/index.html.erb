@@ -1,10 +1,12 @@
+
 <div class="d-flex m-3">
   <div class="none">
     <div class="row justify-content-center">
       <% current_user.bookmarks.each do |bookmark| %>
-      <div class="col-5">
+       <div class="col-5">
         <div class="d-flex justify-content-center">
           <div class="card rounded">
+
 
               <div class="p-2">
                 <% bookmark.post.photos.each do |photo| %>
@@ -13,7 +15,7 @@
               </div>
               <div class="card-infos mt-2">
                 <h2><%= bookmark.post.title %></h2>
-                 <%= cl_image_tag bookmark.post.user.avatar.key, class: "avatar dropdown-toggle" %>
+                <%= render 'shared/avatar', post: bookmark.post %>
               </div>
 
           </div>
