@@ -23,3 +23,10 @@
 </div>
 
 <p>Participants => below show avatars of people that want the event</p>
+
+<div class="mt-auto mt-2">
+  <% if policy(@event).edit? %>
+    <%= link_to icon('fa-solid', 'pen-to-square'), edit_event_path(@event)%>
+    <%= link_to icon('fa-solid', 'trash'), event_path(@event), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+  <% end %>
+</div>

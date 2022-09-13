@@ -13,4 +13,14 @@ class EventPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def update?
+    # record = instance of event
+    # user = current_user
+    record.user == user
+  end
+
+  def destroy?
+    record.user == user
+  end
 end

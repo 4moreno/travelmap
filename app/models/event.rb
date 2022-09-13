@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
   belongs_to :city
+  has_many :attendances, dependent: :destroy
 
   validates :start_time, presence: true
   validates :end_time, presence: true
@@ -9,13 +10,13 @@ class Event < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :filter_by_city,
-  against: [ :city_id ],
-  associated_against: {
-    city: :name
-  },
-  using: {
-    tsearch: { prefix: true }
-  }
+                  against: [:city_id],
+                  associated_against: {
+                    city: :name
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   def time
     "#{start_time.strftime('%I:%M %p')} - #{end_time.strftime('%I:%M %p')}"
@@ -27,7 +28,7 @@ class Event < ApplicationRecord
 
   before_validation :geocode, if: :will_save_change_to_address?
 
-  geocoded_by :address do |obj,results|
+  geocoded_by :address do |obj, results|
     if geo = results.first
       obj.latitude = geo.latitude
       obj.longitude = geo.longitude

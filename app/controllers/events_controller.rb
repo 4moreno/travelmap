@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+
   def index
     @events = policy_scope(Event)
 
@@ -33,14 +35,32 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    authorize @event
+  end
+
+  def edit
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to event_path(@event), status: :see_other, notice: "You successfully updated the event: #{@event.name}"
+    end
+  end
+
+  def destroy
+    if @event.destroy
+      redirect_to events_path, status: :see_other, notice: "You successfully deleted the event: #{@event.name}"
+    end
   end
 
   private
 
   def event_params
     params.require(:event).permit(:name, :description, :start_time, :end_time, :address, :city_id)
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
+    authorize @event
   end
 
 end

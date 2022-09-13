@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "profile", action: :show, controller: "users"
   resources :bookmarks, only: :destroy
   resources :wishlists, only: :index
-  resources :events, only: [:index, :show, :new, :create] do
+  resources :events do
     resources :attendances, only: [:index, :create]
   end
   resources :attendances, only: :destroy
