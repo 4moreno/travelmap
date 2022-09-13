@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <h1 class="text-center">Calendar</h1>
+  <%= form_with url: '/events', method: :get, class: "d-flex" do %>
+    <%= text_field_tag :city,
+      params[:city],
+      class: "form-control",
+      placeholder: "Filter by city"
+    %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+  <%= month_calendar(events: @events, end_attribute: :end_time) do |date, events| %>
+    <%= date %>
+
+    <% events.each do |event| %>
+      <%= link_to event_path(event) do %>
+        <div class="event">
+          <p><%= event.name %></p>
+          <%= render "shared/avatar_owner", event_owner: event.user %>
+          <small><%= event.time unless event.multi_days? %></small>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%# Show message on top: X people have an event on the same dates %>

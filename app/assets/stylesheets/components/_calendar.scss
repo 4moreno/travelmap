@@ -1,0 +1,21 @@
+.simple-calendar {
+  table {
+    min-height: 80vh;
+  }
+  .today {
+    background-color: #FAF3DD;
+  }
+}
+
+.event {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $teal;
+  transition: background 0.3s ease;
+}
+
+.event:hover {
+  background: $dark-teal;
+  color: white;
+}

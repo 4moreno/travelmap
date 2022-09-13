@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get "profile", action: :show, controller: "users"
   resources :bookmarks, only: :destroy
   resources :wishlists, only: :index
+  resources :events do
+    resources :attendances, only: [:index, :create]
+  end
+  resources :attendances, only: :destroy
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
