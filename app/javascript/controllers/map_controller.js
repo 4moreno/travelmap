@@ -11,10 +11,21 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
+    // let map_style = "mapbox://styles/mapbox/streets-v10"
+
+    // when you want to change the map style
+    // if (document.getElementsByClassName("mapstyle_white").length === 1) {
+    //   map_style = "mapbox://styles/mapbox/light-v10"
+    // }
+
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/satellite-streets-v11"
+      // style: map_style
+
     })
+
+    // this.map.style = "mapbox://styles/mapbox/light-v10";
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
 
@@ -42,6 +53,12 @@ export default class extends Controller {
 
 
 
+
+
+  #fitMapToMarkers() {
+    const bounds = new mapboxgl.LngLatBounds()
+    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
   #addMarkersToMap() {
@@ -60,10 +77,18 @@ export default class extends Controller {
     });
   }
 
-  #fitMapToMarkers() {
-    const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+
+  showHideCards(marker) {
+    // console.log(marker)
+    let elements = document.getElementsByClassName("hide_city");
+    for (let element of elements) {
+      element.style.display = "none";
+    }
+
+    elements = document.getElementsByClassName("cityid_" + marker.city);
+    for (let e of elements) {
+      e.style.display = "block";
+    }
   }
 
 }

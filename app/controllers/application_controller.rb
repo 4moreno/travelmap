@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :configure_permitted_parameters,
+      if: :devise_controller?
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
+  end
+
   include Pundit::Authorization
 
   # Pundit: allow-list approach
