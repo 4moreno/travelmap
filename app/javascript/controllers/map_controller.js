@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
+import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions"
 
 export default class extends Controller {
   static values = {
@@ -19,24 +20,25 @@ export default class extends Controller {
 
     const nav_zoom = new mapboxgl.NavigationControl();
     this.map.addControl(nav_zoom, 'bottom-left');
-    const user_loc = new mapboxgl.GeolocateControl();
+    const user_loc = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      showUserLocation: true
+    });
     this.map.addControl(user_loc, 'bottom-left');
 
-    var mapboxgl = require('mapbox-gl');
-    var MapboxDirections = require('@mapbox/mapbox-gl-directions');
+    // var mapboxgl = require('mapbox-gl');
+    // var MapboxDirections = require('@mapbox/mapbox-gl-directions');
 
-    var directions = new MapboxDirections({
-      accessToken: 'mapboxgl.accessToken',
+    let directions = new MapboxDirections({
+      accessToken: this.apiKeyValue,
       unit: 'metric',
       profile: 'mapbox/cycling'
     });
 
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v9'
-    });
-
-    map.addControl(directions, 'top-left');
+    this.map.addControl(directions, 'top-left');
 
 
 
