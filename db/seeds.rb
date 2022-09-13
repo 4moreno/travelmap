@@ -11,11 +11,11 @@ ActiveRecord::Base.connection.tables.each do |t|
 end
 
 puts "delete DB"
-Bookmark.destroy_all
-Wishlist.destroy_all
-Post.destroy_all
-City.destroy_all
-User.destroy_all
+# Bookmark.destroy_all
+# Wishlist.destroy_all
+# Post.destroy_all
+# City.destroy_all
+# User.destroy_all
 
 User.create(username: "Dareos", email: "dareos@lewagon.com", password: "111111")
 # User.create(username: "Yuki", email: "yuki@lewagon.com", password: "222222")
