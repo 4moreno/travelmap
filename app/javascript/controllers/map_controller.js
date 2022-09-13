@@ -57,14 +57,14 @@ export default class extends Controller {
 
 
 
-  #fitMapToMarkers() {
+  #fitMapToMarkers();{
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
 
-  showHideCards(marker) {
+  showHideCards(marker);{
     // console.log(marker)
     let elements = document.getElementsByClassName("hide_city");
     for (let element of elements) {
