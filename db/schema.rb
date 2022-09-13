@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_13_140201) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_13_141828) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_140201) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_chatrooms_on_event_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -148,6 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_140201) do
   add_foreign_key "attendances", "users"
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "wishlists"
+  add_foreign_key "chatrooms", "events"
   add_foreign_key "events", "cities"
   add_foreign_key "events", "users"
   add_foreign_key "messages", "chatrooms"
