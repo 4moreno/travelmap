@@ -67,7 +67,7 @@ h2 {
 .city-card {
   background-size: cover;
   background-position: center;
-  height: 250px;
+  height: 300px;
   width: 100%;
   display: flex;
   font-family: 'Paytone One', sans-serif;
@@ -81,6 +81,9 @@ h2 {
 }
 
 .recommendations {
+  width: 60%;
+  margin: 0 auto;
+
   a {
     text-decoration: none;
   }

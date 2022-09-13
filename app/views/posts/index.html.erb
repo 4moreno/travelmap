@@ -1,9 +1,16 @@
+
+<div style="width: 200%; height: 600px; border: 20px solid #000000;"
+
+<!--this is index page cards and map-->
 <div style="width: 100%; height: 300px;"
+
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-<div class="container">
+
+
+<div class="container mt-5">
   <div class="row justify-content-center">
     <% @posts.each do |post|  %>
       <div class="col-3">
@@ -32,7 +39,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-          <!--card detail -->
+          <!--card detail(show page) -->
             <div class="d-flex justify-content-center mt-3">
               <div class="card-with-map rounded">
                 <div class="p-2" >
