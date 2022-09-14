@@ -8,7 +8,6 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :address, presence: true
 
-
   include PgSearch::Model
   pg_search_scope :global_search,
   against: [ :title, :description, :category, :city_id ],
@@ -27,7 +26,7 @@ class Post < ApplicationRecord
       obj.longitude = geo.longitude
       city_obj = City.find_by(name: geo.city)
       # obj.city = city_obj ? city_obj : City.new(name: geo.city)
-     
+
       if city_obj
         obj.city = city_obj
       else
