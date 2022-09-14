@@ -4,6 +4,9 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
 
+    @posts = current_user.posts
+    authorize @posts
+    
     @markers = @posts.geocoded.map do |post|
       {
         lat: post.latitude,
