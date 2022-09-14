@@ -2,7 +2,7 @@
   <h1 class="text-center">About: <%= @event.name %> </h1>
   <div class="host d-flex gap-3 align-items-center mt-3">
     <h2 class="text-center mt-1 mb-2">Hosted by</h2>
-     <%= cl_image_tag current_user.avatar.key, class: "avatar-host" %>
+     <%= cl_image_tag @event_owner.avatar.key, class: "avatar-host" %>
   </div>
 
 <div class="event-details-wrapper mt-4 d-flex gap-3">
