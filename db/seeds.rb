@@ -75,17 +75,6 @@ Post.create(
 
 Post.create(
   user_id: "1",
-  city_id: "1",
-  address: "21 Wellington St, London WC2E 7RQ, United Kingdom",
-  title: "Enjoyed Lion king theatre!",
-  category: "Entertaiments",
-  description: "Went to see The Lion King and all I can say is WOW!.
-                the Lyceum is a great venue for it! Inside there is mini bar for drinks and snacks (wine & popcorn)
-                and the staff are attentive, friendly and helpful!!"
-)
-
-Post.create(
-  user_id: "1",
   city_id: "3",
   address: "Unter den Linden 2, 10117 Berlin, Germany",
   title: "Deutsches Historisches Museum",
