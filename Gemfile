@@ -7,6 +7,7 @@ ruby "3.1.2"
 gem "pundit"
 gem "devise"
 gem "cloudinary"
+
 gem "geocoder"
 gem "pg_search"
 gem "simple_calendar", "~> 2.4"

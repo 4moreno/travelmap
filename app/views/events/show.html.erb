@@ -29,6 +29,7 @@
         <%= link_to icon('fa-solid', 'pen-to-square'), edit_event_path(@event)%>
         <%= link_to icon('fa-solid', 'trash'), event_path(@event), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
       <% end %>
+      <%= link_to "LINK To Chat", chatroom_path(@event.chatroom) %>
     </div>
 
     <div class="text-end">
