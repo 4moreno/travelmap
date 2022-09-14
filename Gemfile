@@ -8,6 +8,7 @@ gem "pundit"
 gem "devise"
 gem "cloudinary"
 
+
 gem "geocoder"
 gem "pg_search"
 gem "simple_calendar", "~> 2.4"
@@ -37,7 +38,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
