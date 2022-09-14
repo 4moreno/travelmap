@@ -7,6 +7,9 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import IndexMapController from "./index_map_controller"
+application.register("index-map", IndexMapController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
 
