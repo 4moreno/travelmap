@@ -62,10 +62,6 @@ export default class extends Controller {
 
 
       if (marker.info_window) {
-
-
-
-
         new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
