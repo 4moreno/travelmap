@@ -22,7 +22,9 @@
         <tr>
           <% dates.each do |date| %>
             <%= content_tag :td, class: calendar.td_classes_for(date) do %>
-              <% passed_block.call date.day, sorted_events.fetch(date, []) %>
+              <%# <div class="scrollable"> %>
+                <% passed_block.call date.day, sorted_events.fetch(date, []) %>
+              <%# </div> %>
             <% end %>
           <% end %>
         </tr>
