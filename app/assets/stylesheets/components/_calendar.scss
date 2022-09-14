@@ -20,6 +20,18 @@
   color: white;
 }
 
+.calendar-wrapper {
+  width: 75%;
+}
+
+.filter-by-city-search {
+
+  .filter {
+    width: 40%;
+    justify-content: center;
+  }
+}
+
 tbody {
   a {
     margin: 2px;
