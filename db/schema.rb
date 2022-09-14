@@ -115,15 +115,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_141828) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "chatroom_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["chatroom_id"], name: "index_sessions_on_chatroom_id"
-    t.index ["user_id"], name: "index_sessions_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -157,7 +148,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_141828) do
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "cities"
   add_foreign_key "posts", "users"
-  add_foreign_key "sessions", "chatrooms"
-  add_foreign_key "sessions", "users"
   add_foreign_key "wishlists", "users"
 end
