@@ -53,22 +53,40 @@
   border-color: $dark-peach;
 }
 
+// Form for events
 
-#post_category_javascript + label {
-  color: #FFC65A;
+.form-events {
+  input:not(.btn-peach) {
+    background: white;
+    border: none;
+    border-radius: 8px;
+  }
 }
 
-#post_category_javascript:checked + label {
-  background-color: #FFC65A;
-  border-color: #FFC65A;
+.event_description {
+  textarea {
+    background: white;
+    border: none;
+    border-radius: 8px;
+  }
 }
 
 
-#post_category_css + label {
-  color: #62DDF5;
-}
+// #post_category_javascript + label {
+//   color: #FFC65A;
+// }
 
-#post_category_css:checked + label {
-  background-color: #62DDF5;
-  border-color: #62DDF5;
-}
+// #post_category_javascript:checked + label {
+//   background-color: #FFC65A;
+//   border-color: #FFC65A;
+// }
+
+
+// #post_category_css + label {
+//   color: #62DDF5;
+// }
+
+// #post_category_css:checked + label {
+//   background-color: #62DDF5;
+//   border-color: #62DDF5;
+// }
