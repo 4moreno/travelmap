@@ -34,10 +34,46 @@
   }
 }
 
+.btn-teal {
+  color: white;
+  padding: 8px 24px;
+  border: 1px solid $teal;
+  border-radius: 50px;
+  background-color: $teal;
+  font-weight: 400;
+  text-decoration: none;
+  transition: background 70ms ease-in-out;
+
+  &:hover {
+    background-color: $dark-teal;
+    border: 1px solid $dark-teal;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.btn-teal-outline {
+  color: $peach;
+  padding: 8px 24px;
+  border: 1px solid $teal;
+  border-radius: 50px;
+  background-color: transparent;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: transparent;
+    border: 1px solid $dark-teal;
+    color: $dark-teal;
+    text-decoration: none;
+  }
+}
+
 
 .title-btn:hover {
   cursor: pointer;
-  
+
 }
 
 // .btn-grey {
