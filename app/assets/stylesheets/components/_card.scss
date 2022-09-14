@@ -3,7 +3,8 @@
 .card {
   display: flex;
   justify-content: center;
-  max-height: 300px;
+  // added 30px more for heroku
+  max-height: 330px;
   margin-top: 10px;
   overflow: hidden;
   background: white;
