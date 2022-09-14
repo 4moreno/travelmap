@@ -1,12 +1,12 @@
 <div class="container mt-5">
-  <h1 class="text-center">Calendar</h1>
-  <%= form_with url: '/events', method: :get, class: "d-flex" do %>
+  <h1 class="text-center" id="form-heading" >Calendar 📆</h1>
+  <%= form_with url: '/events', method: :get, class: "d-flex m-2" do %>
     <%= text_field_tag :city,
       params[:city],
       class: "form-control",
       placeholder: "Filter by city"
     %>
-    <%= submit_tag "Search" %>
+    <%= submit_tag "Search", class: "btn-peach" %>
   <% end %>
 
   <%= month_calendar(events: @events, end_attribute: :end_time) do |date, events| %>
