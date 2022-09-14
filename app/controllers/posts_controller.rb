@@ -13,7 +13,7 @@ class PostsController < ApplicationController
         lat: post.latitude,
         lng: post.longitude,
         info_window: render_to_string(partial: "info_window", locals: { post: post }),
-        image_url: helpers.asset_url("/home/jbello/code/4moreno/travelmap/app/assets/images/logo-peach.png")
+        image_url: helpers.asset_url("logo-dark-teal.png")
       }
     end
   end

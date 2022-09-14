@@ -10,7 +10,8 @@ class WishlistsController < ApplicationController
       @markers = @posts.geocoded.map do |post|
       {
         lat: post.latitude,
-        lng: post.longitude
+        lng: post.longitude,
+        image_url: helpers.asset_url("logo-dark-teal.png")
       }
    end
   end
