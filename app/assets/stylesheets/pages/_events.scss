@@ -1,16 +1,18 @@
 .event-wrapper {
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
+  margin-top: 36px;
 
   h1 {
     color: $peach;
     font-family: 'Paytone One', sans-serif;
-    font-size: 30px;
+    font-size: 28px;
   }
 
   h2 {
     font-family: 'Paytone One', sans-serif;
     font-size: 16px;
+    opacity: 0.7;
   }
 
   .host {
@@ -21,17 +23,18 @@
 .date-time-place {
   background-color: white;
   padding: 20px;
-  width: 40%;
+  width: 45%;
 
   p {
     margin: 0;
+    font-size: 14px;
   }
 }
 
 .description-participants {
   background-color: white;
   padding: 20px;
-  width: 60%;
+  width: 55%;
   p {
     span {
       font-weight: 300;
@@ -39,8 +42,6 @@
   }
 }
 
-#back-to-events {
-  a {
-    text-decoration: none;
-  }
+.avatar-participants-wrapper {
+  margin-top: -12px;
 }
