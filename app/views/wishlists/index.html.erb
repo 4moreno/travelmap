@@ -1,32 +1,38 @@
 
 <div class="d-flex m-3">
+  <div id="map-wishlist" style="min-width: 45%; height: 700px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
   <div class="none">
+    <div>
+      <h1 class="text-center mt-3" id="form-heading" >My wishlist 📌</h1>
+    </div>
     <div class="row justify-content-center">
       <% current_user.bookmarks.each do |bookmark| %>
        <div class="col-5">
         <div class="d-flex justify-content-center">
           <div class="card rounded">
-
-
               <div class="p-2">
                 <% bookmark.post.photos.each do |photo| %>
                   <%= cl_image_tag photo.key, class: "card-image" %>
                 <% end %>
               </div>
-              <div class="card-infos mt-2">
-                <h2><%= bookmark.post.title %></h2>
-                <%= render 'shared/avatar', post: bookmark.post %>
+              <div class="card-infos d-flex justify-content-between align-items-center">
+                <div>
+                  <%= link_to post_path(bookmark.post) do %>
+                    <h2><%= bookmark.post.title %></h2>
+                  <% end %>
+                </div>
+                <div>
+                  <%= render 'shared/avatar', post: bookmark.post %>
+                </div>
               </div>
-
           </div>
         </div>
       </div>
       <% end %>
     </div>
-  </div>
-  <div id="map-wishlist" style="min-width: 45%; height: 700px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>

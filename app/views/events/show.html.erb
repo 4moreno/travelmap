@@ -1,32 +1,64 @@
-<h1>About the event: </h1>
-<p><%= @event.name %> by <%= @event.user_id %>[avatar-placeholder]</p>
-<p><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <rect x="4" y="5" width="16" height="16" rx="2" />
-  <line x1="16" y1="3" x2="16" y2="7" />
-  <line x1="8" y1="3" x2="8" y2="7" />
-  <line x1="4" y1="11" x2="20" y2="11" />
-  <rect x="8" y="15" width="2" height="2" />
-</svg> <%= @event.start_time %> to <%= @event.end_time %></p>
-<p><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <circle cx="12" cy="11" r="3" />
-  <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-</svg> <%= @event.address %></p>
-<div>
-  <% attendance_for_event = current_user.attendances.find_by(event: @event) %>
-  <% if attendance_for_event %>
-      <%= button_to "Don't join", attendance_path(attendance_for_event), method: :delete %>
-  <% else %>
-      <%= button_to "Join", event_attendances_path(@event), method: :post %>
-  <% end %>
+<div class="event-wrapper mt-5">
+  <h1 class="text-center">About: <%= @event.name %> </h1>
+  <div class="host d-flex gap-3 align-items-center mt-3">
+    <h2 class="text-center mt-1 mb-2">Hosted by</h2>
+     <%= cl_image_tag current_user.avatar.key, class: "avatar-host" %>
+  </div>
+
+<div class="event-details-wrapper mt-4 d-flex gap-3">
+     <div class="date-time-place d-flex flex-column justify-content-center">
+        <p><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#006A71" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <rect x="4" y="5" width="16" height="16" rx="2" />
+        <line x1="16" y1="3" x2="16" y2="7" />
+        <line x1="8" y1="3" x2="8" y2="7" />
+        <line x1="4" y1="11" x2="20" y2="11" />
+        <rect x="8" y="15" width="2" height="2" />
+        </svg> <%= @event.start_time.strftime("%m/%d/%Y") %> to <%= @event.end_time.strftime("%m/%d/%Y") %>
+      </p>
+    <p><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#006A71" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <circle cx="12" cy="12" r="9" />
+        <polyline points="12 7 12 12 15 15" />
+        </svg> <%= @event.start_time.strftime("%I:%M%p") %> to <%= @event.end_time.strftime("%I:%M%p") %></p>
+      </p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#006A71" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <circle cx="12" cy="11" r="3" />
+        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+        </svg> <%= @event.address %>
+      </p>
+    </div>
+
+    <div class="description-participants">
+        <p>Description: <br><span><%= @event.description %></span></p>
+
+        <p>Participants (<%= @event.attendances.count %>):</p>
+        <div class="avatar-participants-wrapper">
+          <% @participants.each do |participant|  %>
+            <%= cl_image_tag participant.avatar.key, class: "avatar-participant" %>
+          <% end %>
+        </div>
+    </div>
 </div>
 
-<p>Participants => below show avatars of people that want the event</p>
+  <div class="edit-delete-wrapper d-flex justify-content-end gap-1 mt-2">
+    <% if policy(@event).edit? %>
+      <%= link_to icon('fa-solid', 'pen-to-square'), edit_event_path(@event)%>
+      <%= link_to icon('fa-solid', 'trash'), event_path(@event), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
 
-<div class="mt-auto mt-2">
-  <% if policy(@event).edit? %>
-    <%= link_to icon('fa-solid', 'pen-to-square'), edit_event_path(@event)%>
-    <%= link_to icon('fa-solid', 'trash'), event_path(@event), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-  <% end %>
+  <div class="d-flex justify-content-end mt-3 gap-2">
+    <%= link_to icon('fa-regular', 'comments'), chatroom_path(@event.chatroom), class:"btn-teal" %>
+    <% attendance_for_event = current_user.attendances.find_by(event: @event) %>
+    <% if attendance_for_event %>
+      <%= button_to "Leave event", attendance_path(attendance_for_event), method: :delete, class:"btn-peach-outline" %>
+    <% else %>
+      <%= button_to "Join", event_attendances_path(@event), method: :post, class:"btn-peach" %>
+    <% end %>
+  </div>
+</div>
+<div class="mt-4 mb-1 text-start px-4">
+  <small id="back-to-events"><%= link_to "See all events", events_path %></small>
 </div>

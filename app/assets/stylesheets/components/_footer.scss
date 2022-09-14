@@ -2,26 +2,27 @@
   background-color: $peach;
   color: white;
   padding: 20px;
+  height: 110px;
 }
 
 .footer-links a {
   color: white;
-  font-size: 30px;
+  font-size: 20px;
 
   &:hover {
-    color: rgb(184, 181, 181);
+    color: $teal;
   }
 }
 
 .footer {
   p {
     font-size: small;
-    font-weight: 300;
+    font-weight: 200;
   }
 }
 
 .footer {
   h5 {
-    font-weight: 400;
+    font-weight: 300;
   }
 }

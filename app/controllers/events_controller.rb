@@ -26,6 +26,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     authorize @event
+
     if @event.valid?
       @event.save
       redirect_to events_path, status: :see_other, notice: "You successfully created the event: #{@event.name}"
@@ -35,6 +36,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @participants = @event.users
   end
 
   def edit

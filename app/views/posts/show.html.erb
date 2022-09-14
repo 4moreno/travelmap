@@ -10,7 +10,11 @@
           <%# h3 with category was here replaced by Antonio for a button without link L17 %>
           <h4 class="mb-3"><%= @post.address %></h4>
           <p><%= @post.description %></p>
-          <%= cl_image_tag @post.user.avatar.key, class: "avatar dropdown-toggle" %>
+            <% if @post.user.avatar.present? %>
+              <%= cl_image_tag @post.user.avatar.key, class: "avatar dropdown-toggle" %>
+            <% else %>
+              <%= image_tag "avatar.png", class: "avatar dropdown-toggle" %>
+            <% end %>
         </div>
         <div class="d-flex align-items-end flex-column">
           <div class="p-2">
@@ -45,7 +49,7 @@
         </div>
       </div>
     </div>
-  <div class="rounded" style="width: 60%;"
+  <div class="rounded" style="width: 140%;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">

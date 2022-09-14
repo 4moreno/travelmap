@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_13_090307) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_13_141828) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_090307) do
     t.index ["wishlist_id"], name: "index_bookmarks_on_wishlist_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_chatrooms_on_event_id"
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -80,6 +88,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_090307) do
     t.float "latitude"
     t.index ["city_id"], name: "index_events_on_city_id"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -123,8 +141,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_090307) do
   add_foreign_key "attendances", "users"
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "wishlists"
+  add_foreign_key "chatrooms", "events"
   add_foreign_key "events", "cities"
   add_foreign_key "events", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "posts", "cities"
   add_foreign_key "posts", "users"
   add_foreign_key "wishlists", "users"
