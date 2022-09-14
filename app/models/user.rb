@@ -8,8 +8,10 @@ class User < ApplicationRecord
   has_one :wishlist
   has_many :events
   has_many :bookmarks, through: :wishlist
+  has_many :messages
   has_many :attendances
   has_one_attached :avatar
+
 
   after_create :create_wishlist
 
