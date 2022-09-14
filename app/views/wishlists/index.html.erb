@@ -1,10 +1,11 @@
-
+<h1 class="text-center" id="form-heading" >My wishlist 📌</h1>
 <div class="d-flex m-3">
   <div id="map-wishlist" style="min-width: 45%; height: 700px;"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+
   <div class="none">
     <div class="row justify-content-center">
       <% current_user.bookmarks.each do |bookmark| %>
@@ -20,14 +21,14 @@
               </div>
               <div class="card-infos d-flex justify-content-between align-items-center">
                 <div>
-                <h2>
-                  <%= bookmark.post.title %></h2>
+                  <%= link_to post_path(bookmark.post) do %>
+                    <h2><%= bookmark.post.title %></h2>
+                  <% end %>
                 </div>
                 <div>
                   <%= render 'shared/avatar', post: bookmark.post %>
                 </div>
               </div>
-
           </div>
         </div>
       </div>
