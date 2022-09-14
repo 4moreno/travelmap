@@ -20,7 +20,7 @@ class Post < ApplicationRecord
 
   before_validation :geocode, if: :will_save_change_to_address?
 
-  geocoded_by :address do |obj,results|
+  geocoded_by :address do |obj, results|
     if geo = results.first
       obj.latitude = geo.latitude
       obj.longitude = geo.longitude
