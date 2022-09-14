@@ -12,6 +12,7 @@ class UsersController < ApplicationController
         lat: post.latitude,
         lng: post.longitude,
         city: post.city_id,
+        image_url: helpers.asset_url("logo-peach.png"),
         filter_cards: true
       }
     end
