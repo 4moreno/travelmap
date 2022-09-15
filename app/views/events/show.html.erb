@@ -1,11 +1,20 @@
-<div class="event-wrapper mt-5">
-  <h1 class="text-center">About: <%= @event.name %> </h1>
-  <div class="host d-flex gap-3 align-items-center mt-3">
-    <h2 class="text-center mt-1 mb-2">Hosted by</h2>
-     <%= cl_image_tag @event_owner.avatar.key, class: "avatar-host" %>
+<div class="event-wrapper">
+  <div class="heading-wrapper d-flex align-items-center justify-content-around">
+    <h1> <%= @event.name %> </h1>
+    <div class="host d-flex gap-2 align-items-center">
+      <h2 class="mt-1 mb-2">Hosted by</h2>
+      <%= cl_image_tag @event_owner.avatar.key, class: "avatar-host" %>
+    </div>
   </div>
 
-<div class="event-details-wrapper mt-4 d-flex gap-3">
+  <div class="edit-delete-wrapper d-flex justify-content-end gap-1 mt-3">
+    <% if policy(@event).edit? %>
+      <%= link_to icon('fa-solid', 'pen-to-square'), edit_event_path(@event)%>
+      <%= link_to icon('fa-solid', 'trash'), event_path(@event), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+
+<div class="event-details-wrapper mt-1 d-flex gap-3">
      <div class="date-time-place d-flex flex-column justify-content-center">
         <p><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#006A71" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -42,14 +51,7 @@
     </div>
 </div>
 
-  <div class="edit-delete-wrapper d-flex justify-content-end gap-1 mt-2">
-    <% if policy(@event).edit? %>
-      <%= link_to icon('fa-solid', 'pen-to-square'), edit_event_path(@event)%>
-      <%= link_to icon('fa-solid', 'trash'), event_path(@event), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-    <% end %>
-  </div>
-
-  <div class="d-flex justify-content-end mt-3 gap-2">
+  <div class="d-flex justify-content-end mt-3 mb-5 gap-2">
     <%= link_to icon('fa-regular', 'comments'), chatroom_path(@event.chatroom), class:"btn-teal" %>
     <% attendance_for_event = current_user.attendances.find_by(event: @event) %>
     <% if attendance_for_event %>
@@ -58,7 +60,4 @@
       <%= button_to "Join", event_attendances_path(@event), method: :post, class:"btn-peach" %>
     <% end %>
   </div>
-</div>
-<div class="mt-4 mb-1 text-start px-4">
-  <small id="back-to-events"><%= link_to "See all events", events_path %></small>
 </div>
