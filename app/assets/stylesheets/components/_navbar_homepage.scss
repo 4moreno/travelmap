@@ -1,7 +1,37 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: transparent;
+  padding-left: 8px;
+  padding-right: 8px;
   transition: 0.5s background-color ease;
+}
+
+.nav-item-hp {
+  padding: 0 1px;
+  font-size: 17px;
+
+  a {
+    &:hover {
+      color: $teal;
+    }
+  }
+}
+
+.searchbar {
+  input {
+    border: none;
+  }
+
+  input::placeholder {
+    font-size: 13px;
+    font-weight: 400;
+    opacity: .7;
+  }
+}
+
+#logo-navbar-hp {
+  width: 66px;
+  height: auto;
 }
 
 .navbar-lewagon-peach {
@@ -31,4 +61,3 @@
   border-radius: 25px;
   margin-right: 10px;
 }
-
