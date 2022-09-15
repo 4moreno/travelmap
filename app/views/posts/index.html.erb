@@ -1,12 +1,10 @@
 
 <!--this is index page cards and map-->
-
 <div style="width: 100%; height: 400px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
 
 <div class="container mt-5">
   <div class="row justify-content-center">
@@ -14,9 +12,9 @@
       <div class="col-3">
         <div class="d-flex justify-content-center">
           <div class="card rounded">
-            <div class="p-1" style="height: 250px">
+            <div class="p-1" style="height: 330px">
               <% post.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, class: "card-image" %>
+                <%= cl_image_tag photo.key, class: "card-image, img-fluid" %>
               <% end %>
               <div class="card-infos mt-3">
                 <h2 class="mb-1 title-btn" data-bs-toggle="modal" data-bs-target="#modal_<%= dom_id(post) %>"><%= post.title %></h2>

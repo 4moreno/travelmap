@@ -1,13 +1,13 @@
 
 <div class="d-flex m-3">
-  <div style="min-width: 45%; height: 700px;"
+  <div id="map-sticky" style="min-width: 45%"
       data-controller="index-map"
       data-index-map-markers-value="<%= @markers.to_json %>"
       data-index-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
   <div class="none" style="width: 55%">
     <div>
-      <h1 class="text-center"> <%= current_user.username %> map <i class="fa-regular fa-compass"></i></h1>
+      <h1 class="text-center" id="form-heading"> <%= current_user.username %> map <i class="fa-regular fa-compass"></i></h1>
 
     </div>
     <div class="row justify-content-center">
