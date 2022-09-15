@@ -23,7 +23,7 @@
           <div class="mt-auto p-2">
             <% if policy(@post).edit? %>
             <%= link_to icon('fa-solid', 'pen-to-square'), edit_post_path(@post)%>
-            <%= link_to icon('fa-solid', 'trash'), @post, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
+            <%= link_to icon('fa-solid', 'trash'), post_path(@post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
             <% end %>
           </div>
         </div>
