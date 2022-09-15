@@ -1,17 +1,30 @@
 .navbar-pages {
   justify-content: space-between;
   background: $peach;
+  padding-left: 8px;
+  padding-right: 8px;
   transition: 0.5s background-color ease;
   height: 90px;
 }
 
 .nav-item {
   padding: 0 1px;
+  font-size: 17px;
+
   a {
     &:hover {
       color: $dark-teal;
     }
   }
+}
+
+#last-nav-item {
+  padding-right: 12px;
+}
+
+#logo-navbar {
+  width: 66px;
+  height: auto;
 }
 
 .navbar-pages .navbar-collapse {
@@ -33,11 +46,18 @@
   }
 }
 
-.dropdown-menu a {
-  background-color: $dark-teal;
+.dropdown-menu {
+  --bs-dropdown-min-width: 6rem;
+}
+
+#dropdown-item {
+  background-color: white;
+  color: $dark-teal;
+  text-shadow: none;
+  text-align: center;
+  transition: color 70ms ease;
 
   &:hover {
-    background-color: $teal;
-    color: white;
+    color: $teal;
   }
 }
