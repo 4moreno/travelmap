@@ -17,15 +17,15 @@
             <div class="card rounded">
               <div class="p-2" >
                 <% post.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, class: "card-size" %>
+                  <%= cl_image_tag photo.key, class: "card-img" %>
                 <% end %>
               </div>
-              <div class="card-infos mt-3">
+              <div class="card-infos">
                 <%= link_to post_path(post) do %>
                   <h2 class="mb-1"><%= post.title %></h2>
                 <% end %>
                 <h3 class="mb-1"><%= post.category %></h3>
-                
+
               </div>
             </div>
           </div>
