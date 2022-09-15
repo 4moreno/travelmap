@@ -9,8 +9,10 @@
       <div class="searchbar">
         <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
           <%= text_field_tag :query, params[:query],
+
           class: "form-control", placeholder: "Search city, ..."%>
           <%= button_tag icon('fa-solid', 'magnifying-glass'), class: "btn-search-hp" %>
+
         <% end %>
       </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
