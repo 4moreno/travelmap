@@ -34,13 +34,13 @@ export default class extends Controller {
     // var mapboxgl = require('mapbox-gl');
     // var MapboxDirections = require('@mapbox/mapbox-gl-directions');
 
-    let directions = new MapboxDirections({
-      accessToken: this.apiKeyValue,
-      unit: 'metric',
-      profile: 'mapbox/cycling'
-    });
+    // let directions = new MapboxDirections({
+    //   accessToken: this.apiKeyValue,
+    //   unit: 'metric',
+    //   profile: 'mapbox/cycling'
+    // });
 
-    this.map.addControl(directions, 'top-left');
+    // this.map.addControl(directions, 'top-left');
   }
 
 
