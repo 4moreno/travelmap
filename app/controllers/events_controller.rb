@@ -36,6 +36,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event_owner = @event.user
     @participants = @event.users
   end
 

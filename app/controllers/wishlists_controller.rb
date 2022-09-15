@@ -10,8 +10,9 @@ class WishlistsController < ApplicationController
   # The `geocoded` scope filters only flats with coordinates
     @markers = @posts.geocoded.map do |post|
       {
-          lat: post.latitude,
-          lng: post.longitude
+        lat: post.latitude,
+        lng: post.longitude,
+        image_url: helpers.asset_url("logo-peach.png")
       }
     end
   end

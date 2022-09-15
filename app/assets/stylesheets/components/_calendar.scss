@@ -1,9 +1,27 @@
+.calendar-wrapper {
+  width: 75%;
+  margin-top: 36px;
+}
+
+.heading-wrapper {
+  h1 {
+    color: $peach;
+    font-family: 'Paytone One', sans-serif;
+    font-size: 40px;
+    margin: 0;
+  }
+}
+
 .simple-calendar {
   table {
     min-height: 80vh;
   }
   .today {
     background-color: #FAF3DD;
+  }
+
+  .calendar-title {
+    color: $dark-teal;
   }
 }
 
@@ -20,15 +38,33 @@
   color: white;
 }
 
-.calendar-wrapper {
-  width: 75%;
-}
-
 .filter-by-city-search {
+  form {
+    margin: 0;
+  }
 
   .filter {
-    width: 40%;
     justify-content: center;
+  }
+
+    input {
+      width: 250px;
+    }
+
+    #submit {
+      width: 100px;
+    }
+}
+
+.chevron {
+  color: $teal;
+  font-family: 'Paytone One', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    color: $dark-teal;
   }
 }
 

@@ -13,7 +13,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/satellite-streets-v11"
+      style: "mapbox://styles/mapbox/streets-v10"
 
     })
 
@@ -52,17 +52,47 @@ export default class extends Controller {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+      const customMarker = document.createElement("div")
+      customMarker.className = "marker"
+      customMarker.style.backgroundImage = `url('${marker.image_url}')`
+      customMarker.style.backgroundSize = "contain"
+      customMarker.style.width = "25px"
+      customMarker.style.height = "25px"
+
+
       if (marker.info_window) {
-        const popup = new mapboxgl.Popup().setHTML(marker.info_window)
-        new mapboxgl.Marker()
+        new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
+
       } else {
-        new mapboxgl.Marker()
+        new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
+
       }
     });
   }
+
+
+
+  showHideCards(marker) {
+    // console.log(marker)
+    let elements = document.getElementsByClassName("hide_city");
+    for (let element of elements) {
+      element.style.display = "none";
+    }
+
+    elements = document.getElementsByClassName("cityid_" + marker.city);
+    for (let e of elements) {
+      e.style.display = "block";
+    }
+  }
+
+
+
+
+
 }
