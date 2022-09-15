@@ -70,11 +70,40 @@
   }
 }
 
+// Buttons for navbars
+
+.btn-search {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding-left: 0;
+  transition: color 70ms ease-in-out;
+
+  &:hover {
+    color: $dark-teal;
+  }
+}
+
+.btn-search-hp {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding-left: 0;
+  transition: color 70ms ease-in-out;
+
+  &:hover {
+    color: $peach;
+  }
+}
 
 .title-btn:hover {
   cursor: pointer;
 
 }
+
+// Additional button styles if needed
 
 // .btn-grey {
 //   color: white;
@@ -108,6 +137,38 @@
 //     background-color: transparent;
 //     border: 1px solid $warm-gray;
 //     color: $warm-gray;
+//     text-decoration: none;
+//   }
+// }
+
+// .btn-search {
+//   background-color: $dark-peach;
+//   color: white;
+//   padding: 2px 6px;
+//   border: 1px solid $dark-peach;
+//   border-radius: 50px;
+//   transition: background 70ms ease-in-out;
+
+//   &:hover {
+//     background-color: $dark-peach;
+//     border: 1px solid $dark-peach;
+//     color: white;
+//     text-decoration: none;
+//   }
+// }
+
+// .btn-search-hp {
+//   background-color: $peach;
+//   color: white;
+//   padding: 2px 6px;
+//   border: 1px solid $peach;
+//   border-radius: 50px;
+//   transition: background 70ms ease-in-out;
+
+//   &:hover {
+//     background-color: $dark-peach;
+//     border: 1px solid $dark-peach;
+//     color: white;
 //     text-decoration: none;
 //   }
 // }
