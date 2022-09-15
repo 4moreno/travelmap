@@ -14,7 +14,7 @@
           <div class="card rounded">
             <div class="p-1" style="height: 330px">
               <% post.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, class: "card-image, img-fluid" %>
+                <%= cl_image_tag photo.key, class: "card-image" %>
               <% end %>
               <div class="card-infos mt-3">
                 <h2 class="mb-1 title-btn" data-bs-toggle="modal" data-bs-target="#modal_<%= dom_id(post) %>"><%= post.title %></h2>
