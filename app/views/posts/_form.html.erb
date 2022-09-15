@@ -3,21 +3,18 @@
     <p class="text-danger">This address is invalid and doesn't have a city</p>
   <% end %>
   <div class="container form-inputs">
-      <%= f.input :title, input_html: { class: "rounded-pill input" } %>
+      <%= f.input :title %>
       <%= f.input :category,
                   as: :radio_buttons,
                   collection_wrapper_tag: 'div',
                   collection_wrapper_class: 'category-wrapper',
+                  input_html: { class: "category-selector" },
                   item_wrapper_class: 'category-item',
-                  input_html: { class: "rounded-pill input category-selector" },
                   collection: Post::CATEGORIES %>
-      <%= f.input :description, label: "Describe your experience", input_html: { class: "rounded-pill input" }  %>
-      <%= f.input :address, input_html: { class: "rounded-pill input" }  %>
-      <%= f.input :photos, as: :file, label: "Upload pictures", input_html: { multiple: true, class: "rounded-pill input" } %>
+      <%= f.input :description, label: "Describe your experience" %>
+      <%= f.input :address %>
+      <%= f.input :photos, as: :file, label: "Upload pictures", input_html: { multiple: true } %>
       <%# f.association :city %>
-      <%= f.submit "Save", class: "btn-peach mb-4 w-100" %>
+      <%= f.submit "Save", class: "btn-peach mb-5 w-100" %>
   </div>
 <% end %>
-<div class="container mt-4">
-  <%= link_to "Go to My map", profile_path, class: "btn-peach-outline" %>
-</div>

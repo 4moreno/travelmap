@@ -1,11 +1,27 @@
+.is-valid {
+  background-image: none !important;
+  background-color: none !important;
+}
+
 .form-wrapper {
   width: 50%;
   margin: 0 auto;
 }
 
-.input {
-  background-color: white;
-  border: none;
+.form-inputs {
+  input:not(.btn-peach) {
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+  }
+}
+
+.post_description {
+  textarea {
+    background: white;
+    border: none;
+    border-radius: 8px;
+  }
 }
 
 #form-heading {
@@ -15,12 +31,12 @@
   margin: 0;
 }
 
-.category-wrapper {
-  display: flex;
+.tag-item {
+  display: inline-block;
 }
 
-.category-item {
-  flex: 0 0 20%;
+.category-wrapper {
+  display: flex;
 }
 
 .category-selector {
@@ -29,30 +45,23 @@
 }
 
 .category-selector + label {
-  display: block;
   cursor: pointer;
-  box-sizing: border-box;
-  width: 70%;
-  font-size: 12px;
-  text-align: left;
-  padding: 10px 10px 10px 10px;
-  border: 1px solid #EAEAEA;
-  border-radius: 5px;
-  background-color: white;
+  display: inline-block;
+  font-size: 0.7rem;
+  border-radius: 50rem;
+  padding: 0.1rem 0.5rem;
+  background-color: $light-peach;
+  color: $dark-peach;
+  border: 1px solid $dark-peach;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
 }
 
 .category-selector:checked + label {
-  color: white !important;
-}
-
-#post_category_artculture + label {
-  color: $dark-peach;
-}
-
-#post_category_artculture:checked + label {
   background-color: $dark-peach;
-  border-color: $dark-peach;
+  color: white;
 }
+
 
 // Form for events
 
@@ -71,23 +80,3 @@
     border-radius: 8px;
   }
 }
-
-
-// #post_category_javascript + label {
-//   color: #FFC65A;
-// }
-
-// #post_category_javascript:checked + label {
-//   background-color: #FFC65A;
-//   border-color: #FFC65A;
-// }
-
-
-// #post_category_css + label {
-//   color: #62DDF5;
-// }
-
-// #post_category_css:checked + label {
-//   background-color: #62DDF5;
-//   border-color: #62DDF5;
-// }
