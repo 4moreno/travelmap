@@ -18,7 +18,7 @@
       <%= date %>
 
       <% events.each do |event| %>
-        <%= link_to event_path(event) do %>
+        <%= link_to event_path(event), class: "event-link" do %>
           <div class="event">
             <p><%= event.name %></p>
             <%= render "shared/avatar_owner", event_owner: event.user %>
