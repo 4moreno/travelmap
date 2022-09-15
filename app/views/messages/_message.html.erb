@@ -1,8 +1,16 @@
-<div id="message-<%= message.id %>">
-  <small>
-    <strong><%= message.user.username %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
-  <%= render(partial: "shared/avatar", locals: {post: message}) %>
+<div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+  <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+    <div class="d-flex" id="message-<%= message.id %>">
+      <div class="d-flex flex-column justify-content-center p-2" style="">
+        <%= render(partial: "shared/avatar", locals: {post: message}) %>
+        <strong><%= message.user.username %></strong>
+      </div>
+      <div>
+        <small>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= message.content %></p>
+      </div>
+    </div>
+  </div>
 </div>
