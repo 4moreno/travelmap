@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  has_one :chatroom
+  has_one :chatroom, dependent: :destroy
   belongs_to :user
   belongs_to :city
   has_many :attendances, dependent: :destroy

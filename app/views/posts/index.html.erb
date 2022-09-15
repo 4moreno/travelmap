@@ -14,13 +14,15 @@
           <div class="card rounded">
             <div class="p-1" style="height: 330px">
               <% post.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, class: "card-image, img-fluid" %>
+                <%= cl_image_tag photo.key, class: "card-image" %>
               <% end %>
               <div class="card-infos mt-3">
                 <h2 class="mb-1 title-btn" data-bs-toggle="modal" data-bs-target="#modal_<%= dom_id(post) %>"><%= post.title %></h2>
                 <h3 class="mb-1"><%= post.category %></h3>
                 <h4 class="mb-3"><%= post.address %></h4>
-                  <%= render(partial: "shared/bookmark", locals: { post: post}) %>
+                <% unless post.user == current_user %>
+                  <%= render(partial: "shared/bookmark", locals: {post: post}) %>
+                <% end %>
                   <div id="avatarpost">
                   <%= render(partial: "shared/avatar", locals: {post: post}) %>
                   </div>
