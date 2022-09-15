@@ -10,7 +10,7 @@
         <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
           <%= text_field_tag :query, params[:query],
           class: "form-control", placeholder: "Search"%>
-          <%= submit_tag "Search", class: "btn-peach" %>
+          <%= button_tag icon('fa-solid', 'magnifying-glass'), class: "btn-search" %>
         <% end %>
       </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,14 +22,17 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <li class="nav-item active">
-              <%= link_to icon('fa-solid', 'pen'), new_post_path, class: "nav-link" %>
+            <li class="nav-item">
+              <%= link_to icon('fa-solid', 'pen', class:"fa-lg"), new_post_path, class: "nav-link" %>
             </li>
-            <li class="nav-item active">
-              <%= link_to icon('fa-regular', 'map'), profile_path, class: "nav-link" %>
+            <li class="nav-item">
+              <%= link_to icon('fa-regular', 'map', class:"fa-lg"), profile_path, class: "nav-link" %>
             </li>
-            <li class="nav-item active">
-              <%= link_to icon('fa-regular', 'calendar'), events_path, class: "nav-link" %>
+            <li class="nav-item">
+              <%= link_to icon('fa-regular', 'calendar', class:"fa-lg"), events_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to icon('fa-solid', 'plane-departure'), events_path, class: "nav-link" %>
             </li>
           </li>
           <li class="nav-item dropdown">

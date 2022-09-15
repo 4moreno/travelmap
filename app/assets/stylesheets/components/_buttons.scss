@@ -70,6 +70,23 @@
   }
 }
 
+// Buttons for navbar
+
+.btn-search {
+  background-color: $dark-peach;
+  color: white;
+  padding: 2px 6px;
+  border: 1px solid $dark-peach;
+  border-radius: 50px;
+  transition: background 70ms ease-in-out;
+
+  &:hover {
+    background-color: $dark-peach;
+    border: 1px solid $dark-peach;
+    color: white;
+    text-decoration: none;
+  }
+}
 
 .title-btn:hover {
   cursor: pointer;

@@ -3,7 +3,15 @@
   background: $peach;
   transition: 0.5s background-color ease;
   height: 90px;
+}
 
+.nav-item {
+  padding: 0 1px;
+  a {
+    &:hover {
+      color: $dark-teal;
+    }
+  }
 }
 
 .navbar-pages .navbar-collapse {
