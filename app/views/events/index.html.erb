@@ -1,17 +1,19 @@
-<div class="container calendar-wrapper mt-5">
-  <h1 class="text-center" id="form-heading" >Calendar 📆</h1>
-  <div class="filter-by-city-search mb-4 mt-3 d-flex justify-content-center">
-    <%= form_with url: '/events', method: :get, class: "d-flex m-2 filter" do %>
-      <%= text_field_tag :city,
-        params[:city],
-        class: "form-control",
-        placeholder: "Filter by city"
-      %>
-      <%= submit_tag "Filter", class: "btn-peach w-10" %>
-    <% end %>
+<div class="calendar-wrapper container">
+  <div class="heading-wrapper d-flex align-items-center justify-content-around mb-3">
+    <h1 class="text-center" >Calendar 📆</h1>
+    <div class="filter-by-city-search d-flex align-items-center justify-content-center">
+      <%= form_with url: '/events', method: :get, class: "d-flex m-2 filter" do %>
+        <%= text_field_tag :city,
+          params[:city],
+          class: "form-control",
+          placeholder: "Filter by city"
+        %>
+        <%= submit_tag "Filter", class: "btn-peach", id: "submit" %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="calendar mb-5">
+  <div class="calendar">
     <%= month_calendar(events: @events, end_attribute: :end_time) do |date, events| %>
       <%= date %>
 
