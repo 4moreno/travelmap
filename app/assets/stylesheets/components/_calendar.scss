@@ -33,6 +33,10 @@
   transition: background 0.3s ease;
 }
 
+.event-link {
+  text-decoration: none;
+}
+
 .event:hover {
   background: $dark-teal;
   color: white;
