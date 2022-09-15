@@ -40,7 +40,7 @@ export default class extends Controller {
   #addMarkersToMap() {
      this.markersValue.forEach((marker) => {
 
-        const filter = new mapboxgl.Popup().setHTML(marker.filter_cards)
+        // const filter = new mapboxgl.Popup().setHTML(marker.filter_cards)
         const customMarker = document.createElement("div")
         customMarker.className = "marker"
         customMarker.style.backgroundImage = `url('${marker.image_url}')`
