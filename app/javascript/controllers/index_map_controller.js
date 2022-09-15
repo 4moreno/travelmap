@@ -39,8 +39,17 @@ export default class extends Controller {
 
   #addMarkersToMap() {
      this.markersValue.forEach((marker) => {
+
+        const filter = new mapboxgl.Popup().setHTML(marker.filter_cards)
+        const customMarker = document.createElement("div")
+        customMarker.className = "marker"
+        customMarker.style.backgroundImage = `url('${marker.image_url}')`
+        customMarker.style.backgroundSize = "contain"
+        customMarker.style.width = "25px"
+        customMarker.style.height = "25px"
+
       if (marker.filter_cards){
-        const filter = new mapboxgl.Marker()
+        const filter = new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat])
         .addTo(this.map);
         // filtering the marker with city_id
@@ -48,7 +57,7 @@ export default class extends Controller {
           this.showHideCards(marker)
         });
       } else {
-        new mapboxgl.Marker()
+        new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
       }
