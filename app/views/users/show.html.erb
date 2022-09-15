@@ -27,7 +27,9 @@
                 <h3 class="mb-1"><%= post.category %></h3>
                 <div class="mt-auto p-2">
                   <%= render(partial: "shared/avatar", locals: {post: post}) %>
-                  <%= render(partial: "shared/bookmark", locals: { post: post}) %>
+                  <% if post.user == current_user %>
+                    <%= render(partial: "shared/bookmark", locals: {post: post})%>
+                  
                 </div>
               </div>
             </div>
