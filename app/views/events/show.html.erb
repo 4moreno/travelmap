@@ -1,6 +1,6 @@
 <div class="event-wrapper">
   <div class="heading-wrapper d-flex align-items-center justify-content-around">
-    <h1>About: <%= @event.name %> </h1>
+    <h1> <%= @event.name %> </h1>
     <div class="host d-flex gap-2 align-items-center">
       <h2 class="mt-1 mb-2">Hosted by</h2>
       <%= cl_image_tag @event_owner.avatar.key, class: "avatar-host" %>
